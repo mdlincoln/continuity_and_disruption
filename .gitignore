@@ -1,0 +1,9 @@
+*.pdf
+*.docx
+*.jpeg
+*.jpg
+*.png
+.Rproj.user
+*.Rproj
+.Rhistory
+_book*
