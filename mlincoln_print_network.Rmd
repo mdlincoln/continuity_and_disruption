@@ -3,7 +3,7 @@ title: "Continuity and Disruption in European Networks of Print Production, 1550
 author: "Matthew Lincoln"
 documentclass: article
 output: 
-  bookdown::pdf_document2
+  bookdown::word_document2
 bibliography: /Users/admin/Zotero/zotero.bib
 csl: /Users/admin/Zotero/styles/chicago-fullnote-bibliography.csl
 ---
@@ -50,7 +50,7 @@ Using macro-scale network analysis to characterize the potential historical prof
 2. How varied were individuals' strategies when it came to domestic and international production? 
 3. More crucially, were these changes in this production balance determined by specific historical events, or, rather, subject to larger structural incentives coupled to _longue durée_ population shifts across Europe over this period?
 
-Shared patterns of domestic and international production shifts across other countries in this period suggest that most of these seemingly-dramatic changes can be explained by gradual demographic trends and the relative maturity of different regional print production communities. 
+While there are, indeed, some dramatic, and dramatically fast, shifts to and from international vs. domestic print production concentraiton,shared patterns of domestic and international production shifts across other countries in this period suggest that most of these seemingly-dramatic changes can be explained by gradual demographic trends and the relative maturity of different regional print production communities.
 That said, key exceptions indicate the occasional power of disruptive events, and even single individuals, to affect a much larger world of printmaking.
 
 # Dutch Internationalism / Dutch Regionalism
@@ -137,17 +137,28 @@ The start of the Dutch revolt against Spain in 1568 may have made it more diffic
 At the same time, the flourishing economy supported a blossoming print industry in Amsterdam in particular.[@hoftijzer2001, 249.]
 With avenues to international collaboration cut off, and an increasing amount of domestic supply _and_ demand in centers like Haarlem and Amsterdam, Dutch printmakers and publishers may have been encouraged to make more domestic connections than ever before.
 Now, rather than having to turn to international partners to produce prints, Dutch artists, printmakers, and publishers could increasingly work with their own countrymen.
-In chapter 2, we found that a flourishing Dutch art market, both in Amsterdam as well as in smaller towns like Utrecht and Delft, appears to have supported a more decentralized print production network than had existed in the late sixteenth century.[^econcr]
+A flourishing Dutch art market, both in Amsterdam as well as in smaller towns like Utrecht and Delft, appears to have supported a more decentralized print production network than had existed in the late sixteenth century.[@lincoln2016-2]
 It is possible that this same decentralization may have spurred more domestic collaboration as well.
-To help illuminate how the balance of these incentives changed between 1550--1750, we can once again turn to network analysis.
-
-[^econcr]: See section \ref{results-a-mixed-message}.
+To help illuminate how the balance of these incentives changed between 1550--1750, we can turn to network analysis.
 
 # Methodology: Measuring International Interaction
 
+Computational network analysis is a particular discipline for describing networks in a formal way.
+While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studioes, or of patronage and collecting - computational network analysis demands that preicsly what makes up the members of a network, and the rules used to derive connections between those members, be defined very specifically.
+The benefit to adopting these strictures, however, is that it permits us to see the complex topological characterists of a network - how centralized or decentralized it is, the degree of interconnection between its constitutent groups, and which members act as key brokers of connections between disparate communities - that are invisible from the ground-level perspective seen when considering just one relationship at a time.
+
+Such a picture is inevitably flattening; it necessitates discarding a great deal of information.
+For example, the production network discussed here is precisely that, a _production-focused_ network, rather than one that incorporates information about familial relationships, or financial relatinoships, or social relationships such as co-membership in a given parish or guild.
+But, like an X-radiograph of a painting, with the loss of some information comes the gain of information othewise unseen.
+Careful focus on the patterns of print co-production will, in fact, offer us a much broader structural context misisng from other information-rich but scale-poor studies.
+Together, both perspectives are more valuable than either one seen alone.
+
 ## Data
 
-The data for this study have been drawn from the collections of the British Museum in London (hereafter BM) and the Rijksmuseum in Amsterdam (hereafter RKM).[For an in-depth discussion of these data and the methodology around inferring production networks from object-based collections, see @lincoln2016-2.]
+The data for this study have been drawn from the collections of the British Museum in London (hereafter BM) and the Rijksmuseum in Amsterdam (hereafter RKM).
+Each print in the collection is treated as evidence of a professional relationship (whether direct or indirect) at a certain point in time.
+For example, the print in Figure \ref@(fig:goldzius-wedding) would be used to create a connection between 
+[For an in-depth discussion of these data and the methodology for inferring production networks from object-based collections, see @lincoln2016-2.]
 
 ```{r nationality-counts}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
