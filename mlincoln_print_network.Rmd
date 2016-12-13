@@ -5,6 +5,7 @@ documentclass: article
 output: 
   bookdown::tufte_handout2:
     toc: false
+    keep_tex: true
 bibliography: ../zotero.bib
 csl: chicago-fullnote-bibliography.csl
 ---
@@ -62,7 +63,9 @@ Among his admirers was no less than the Nuremberg master Albrecht Dürer, who ma
 The influence of Lucas' prints extended south of the Alps, too.
 In Italy, Marcantonio Raimondi frequently adopted Lucas' silvery background designs for use in his own prints, such as the _Climbers_ of 1510 that melds a landscape quoted from Lucas with figures derived from Michelangelo's renowned drawing of the _Battle of Cascina_.^[On Marcantonio's quotation of Lucas, see @barnes2010, 16.] (Figure \@ref(fig:lucas-raimondi))
 
-```{r lucas-raimondi, fig.cap="(left) Lucas van Leyden designed and engraved, *Mohammed and the Monk Sergius*, 1508. Engraving. British Museum, London. (Image © Trustees of the British Museum.) (right) Marcantonio Raimondi after Michelangelo Buonarotti, *The Climbers*, 1510--1520. Engraving, British Museum, London. (Image © Trustees of the British Museum.)"}
+(ref:lucas-raimondi) (left) Lucas van Leyden designed and engraved, *Mohammed and the Monk Sergius*, 1508. Engraving. British Museum, London. (Image © Trustees of the British Museum.) (right) Marcantonio Raimondi after Michelangelo Buonarotti, *The Climbers*, 1510--1520. Engraving, British Museum, London. (Image © Trustees of the British Museum.)
+
+```{r lucas-raimondi, fig.cap="(ref:lucas-raimondi)"}
 include_graphics("assets/images/lucas_raimondi.jpg")
 ```
 
@@ -71,7 +74,9 @@ Some Dutch printmakers had built thriving careers creating engravings for Italia
 Cornelis Cort, in Rome from 1565--1578, found great success as a printmaker for major Italian painters such as Titian, Giulio Clovio, Girolamo Muziano, and Federico Zuccaro.[@sellink1994; @sman2005, 251--252]
 In addition to German and Italian centers, the mid-sixteenth-century publishing house of Hieronymus Cock, _Aux Quatre Vents_, proved especially influential to multiple generations of Dutch printmakers.[For example, during his early career in Haarlem between 1557--1570, Philips Galle engraved several prints to be published in Antwerp by Cock; @sellink1997]
 
-```{r goltzius-wedding, fig.cap="Hendrick Goltzius, after Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1587. Engraving,  43.5 cm. x 86.1 cm. Rijksmuseum, Amsterdam."}
+(ref:goltzius-wedding) Hendrick Goltzius, after Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1587. Engraving,  43.5 cm. x 86.1 cm. Rijksmuseum, Amsterdam.
+
+```{r goltzius-wedding, fig.cap="(ref:goltzius-wedding)"}
 include_graphics("assets/images/goltzius_wedding.jpg")
 ```
 
@@ -81,7 +86,9 @@ Goltzius lived in Haarlem while Galle remained based in Antwerp, working via cor
 Goltzius would continue this model of remote collaboration even after setting up his own independent studio in 1582.
 The collaboration between Hendrick Goltzius and Bartholomeus Spranger, court painter to Rudolf II, illustrates well how the design, cutting, and marketing of a print could easily take on an international scope.[@leeflang2003, 82--83, cat. 28] (Figure \@ref(fig:goltzius-wedding))
 
-```{r evdv, fig.cap="Esaias van de Velde, *Fort with defenses at Tholen on the Scheldt*, 1615--1616. Etching, 8.3 x 16.9 cm. Rijksmuseum, Amsterdam."}
+(ref:evdv) Esaias van de Velde, *Fort with defenses at Tholen on the Scheldt*, 1615--1616. Etching, 8.3 x 16.9 cm. Rijksmuseum, Amsterdam.
+
+```{r evdv, fig.cap="(ref:evdv)"}
 include_graphics("assets/images/evdv.jpg")
 ```
 
@@ -127,6 +134,8 @@ The data for this study have been drawn from the collections of the British Muse
 Both of these collections feature broad and deep collections of European prints (and Dutch and Flemish prints in particular) from this period.
 Moreover, each museum has released meticulous curatorial data aobut these collections amenable to computational processing.
 
+(ref:nationality-counts) Counts of artists (and prints) by nationality in the BM and RKM datasets.
+
 ```{r nationality-counts}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
 
@@ -158,7 +167,7 @@ bm_print_count %>%
     BM = paste0(bm_n_artists, " (", format(bm_n_prints, big.mark = ",", trim = TRUE), ")"),
     RKM = paste0(rkm_n_artists, " (", format(rkm_n_prints, big.mark = ",", trim = TRUE), ")")) %>% 
   select(nationality, `BM artists (prints)` = BM, `RKM artists (prints)` = RKM) %>% 
-  kable(caption = "Counts of artists (and prints) by nationality in the BM and RKM datasets.")
+  kable(caption = "(ref:nationality-counts)")
   
 ```
 
@@ -166,7 +175,9 @@ Each print in the collection is treated as evidence of a professional relationsh
 For example, the print in Figure \@ref(fig:goltzius-wedding) would be used to create a connection between Hendrick Goltzius and Bartholomeus Spranger during the year of 1587.[For an in-depth discussion of these data and the methodology for inferring production networks from object-based collections, see @lincoln2016-2, 138-141.]
 Rather than producing a single network encompassing every constitutent and connection from 200 years of print production, we can instead takeunderstand how this network change over time by constructing snapshots, or slices, of the entwork as it may have appeared in a given period of time based on the surviving evidence that we have.
 
-```{r timeslice, fig.cap="Examples. Previously published in Lincoln 2016."}
+(ref:timeslice) Examples. (Previously published in Lincoln 2016.)
+
+```{r timeslice, fig.cap="(ref:timeslice)"}
 library(RColorBrewer)
 
 yr_graph <- function(early, late) {
@@ -243,7 +254,9 @@ The Dutch 1581 Act of Abjuration (in the wake of the Union of Utrecht two years 
 And while this break is a convenient historical landmark, it was soon followed by large waves of emigration from the south as Protestants and other non-Catholics fled religious persecution in Antwerp for the relatively more tolerant north.
 Many of these migrants were painters like Gillis van Coninxloo, Clara Peeters, and Roelandt Savery, who had an abiding impact on artistic development in the United Provinces.
 
-```{r eii-example, fig.cap="A network with three groups of 20 nodes each. Group A is densely interconnected, so while its members do make some external connections, by in large they connect to each other. Therefore, that group has a negative EI index. Nodes in group B, on the other hand, make a slim majority of their connections externally, giving that group a positive index. Nodes in group C connect exclusively to each other, and so that group has the lowest possible EI index of -1."}
+(ref:eii-example) A network with three groups of 20 nodes each. Group A is densely interconnected, so while its members do make some external connections, by in large they connect to each other. Therefore, that group has a negative EI index. Nodes in group B, on the other hand, make a slim majority of their connections _externally_, giving that group a positive index. Nodes in group C connect exclusively to each other, and so that group has the lowest possible EI index of -1.
+
+```{r eii-example, fig.cap="(ref:eii-example)"}
 a <- sample_gnm(20, 50)
 V(a)$class <- "A"
 
@@ -312,7 +325,9 @@ For the purposes of this analysis, these few artists will be treated as Flemish.
 
 # Results: Catalysts and Sudden Shifts
 
-```{r all-nats-eii, fig.fullwidth = TRUE, fig.cap="The EI Index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750. At 1, all connections made by an actor are to actors outside their national group. At 0, they have an equal number of internal and external connections. At -1, all their connections are to actors within their national group.", fig.height=9, fig.width=7}
+(ref:all-nats-eii) The EI Index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750. At 1, all connections made by an actor are to actors outside their national group. At 0, they have an equal number of internal and external connections. At -1, all their connections are to actors within their national group.
+
+```{r all-nats-eii, fig.fullwidth = TRUE, fig.cap="(ref:all-nats-eii)", fig.height=9, fig.width=7}
 intl_ties <- bind_rows(
   "BM" = bm_APrPu_alive$nat_trends %>% filter(nationality %in% bm_nats),
   "RKM" = rkm_APrPu_alive$nat_trends %>% filter(nationality %in% rkm_nats),
@@ -379,14 +394,14 @@ The result: a shared pattern of a sudden "inward turn" at different points in ti
 Notably, the shifts were most abrupt in communities that were concentrated in particularly small geographic areas (the Northern and Southern Netherlands, England), with more gradual changes in the communities spread across a larger area (Italian, French, and German).
 This pattern suggests that larger structural and demographic causes may have been at play.
 
-Indeed, the pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to concentration in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))
-The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in French and English cities increased.[^popnote]
+Indeed, the pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to concentration in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))[These population data have been derived from @devries1984, appendix 1; a digitized version of this dataset is published in @lincoln_europop]
+The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in French and English cities increased.
 Dutch urban populations peaked in 1650, the same time that the Dutch printmaking network had the lowest EI index, i.e. the greatest preference for _internal_ connections.
 These observed shifts in international interaction may have been driven less by particular disruptive historical moments or artistic movements, and more by gradually building structural incentives powered by changes in populations and the necessarily-collaborative nature of print production.
 
-[^popnote]: These population data have been derived from [@devries1984], appendix 1. I have published a digitized version of this dataset in [@lincoln2015-2]
+(ref:europe-pop) Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. (\"Other\" regions include Scandinavia, Scotland and Ireland, and eastern Europe).
 
-```{r europe-pop, fig.cap = "Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. (\"Other\" regions include Scandinavia, Scotland and Ireland, and eastern Europe).", fig.fullwidth = TRUE}
+```{r europe-pop, fig.cap = "(ref:europe-pop)", fig.fullwidth = TRUE}
 region_map <- c(
   "The Netherlands" = "Dutch",
   "Belgium" = "Flemish",
@@ -459,7 +474,9 @@ This will result in several national clusters without any bridging links. (Figur
 
 [^random_meth]: The importance of a power law probability distribution in random graph generation is explained in page \pageref{fn:fitness_pl}, note \ref{fn:fitness_pl}.
 
-```{r eii-sim-example, fig.cap="A visualization of the two-stage simulation of international print network interconnection. (a) shows the first stage of the simulation, in which several regional communities are created. (b) shows the result of the second stage, in which additional links (here shown as dotted lines) are added both within and between these regional clusters based on a probability distribution that favors well-connected nodes."}
+(ref:eii-sim-example) A visualization of the two-stage simulation of international print network interconnection. (a) shows the first stage of the simulation, in which several regional communities are created. (b) shows the result of the second stage, in which additional links (here shown as dotted lines) are added both within and between these regional clusters based on a probability distribution that favors well-connected nodes.
+
+```{r eii-sim-example, fig.cap="(ref:eii-sim-example)"}
 n_groups = 3
 group_sizes = c(20, 10, 30)
 group_links = c(30, 1, 40)
@@ -517,7 +534,9 @@ By in large, the simulated networks return similar results to those found in the
 This underlines the major governing factor that regional print production capacity --- in other words, the size of the network --- had on any one community's balance of international versus domestic connections.
 However, there are several notable mismatches between the EI indices returned by these randomly generated networks, and those found in the BM and RKM data.
 
-```{r eii-sim, fig.fullwidth = TRUE, fig.width=6, fig.height=9, fig.cap="Random graph EI indices. The black lines show the EI indices observed in the BM and RKM data, while the gray ribbons show the range of results returned by the simulated networks. Some areas with diverging results are highlighted and annotated with some possible explanations."}
+(ref:eii-sim) Random graph EI indices. The black lines show the EI indices observed in the BM and RKM data, while the gray ribbons show the range of results returned by the simulated networks. Some areas with diverging results are highlighted and annotated with some possible explanations.
+
+```{r eii-sim, fig.fullwidth = TRUE, fig.width=6, fig.height=9, fig.cap="(ref:eii-sim)"}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
 bm_fix_nats <- c("Dutch", "Flemish", "British", "French", "German", "Italian")
 rkm_nats <- c("Noord-Nederlands" = "Dutch", "Zuid-Nederlands" = "Flemish", "Engels" = "English", "Frans" = "French", "Duits" = "German", "Italiaans" = "Italian")
@@ -603,8 +622,6 @@ At the scale of hundreds or thousands of artists working over two centuries, the
 And yet, the individual experience of international collaboration and exchange varied widely in this period.
 Several case studies of artists hailing from both the southern and northern Netherlands will illustrate just how diverse these interactions could be.
 
-## The Sadelers' International Connections
-
 ```{r rkm-flem-ind-eii, fig.fullwidth = TRUE, fig.cap="The individual EI scores of highly-central Flemish printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
 top_eiis <- function(dat, yr, nat, n = 10) {
   dat %>%
@@ -638,45 +655,21 @@ grid::grid.draw(cbind(
 )
 ```
 
-Section \ref{flemish-printmaking-dynasties} noted the core role that family dynasties played in the Flemish print production network.
+Family dynasties played a key role in the Flemish print production network.[@lincoln2016-2, 149-152]
 This broader European perspective reveals important distinctions between the comparative international reach of these families.
 While prominent engravers in the Galle, Wierix, and De Jode families tended to make most of their connections to Flemish collaborators, members of the Sadeler family consistently rank among the more internationally-focused Flemish print producers, with Jan (Johann) I Sadeler and Aegidius II Sadeler maintaining a roughly even split between collaboration with Flemish and artists and publishers versus foreign ones. (Figure \@ref(fig:rkm-flem-ind-eii))
 
 The Sadelers leveraged their early displacement from Antwerp in 1586 into a highly successful dynasty connected not only to their original home in Flanders, but also to the Hapsburg court in Prague and to Italian circles in both Venice and Rome.
 In 1586, Jan I and his brother and fellow engraver, Raphael I, along with their nephew Aegidius I, fled political turmoil in Antwerp for Mainz, followed by Frankfurt and then to the court of Duke Wilhelm V in Munich.[See @limouze1994 for an account of Jan's early work in Mainz and Frankfurt; on Munich, see @limouze2009.]
 The Sadelers continued to engrave and publish prints in each of these cities, as evidenced by the constantly changing addresses inscribed on each print.[All of their impressions from this period list a Sadeler (usually Raphael) as _executor_; @limouze2009, 117--118.]
-Aegidius would travel to Italy between 1591--1593, possibly inspired by the Dutch engraver Hendrick Goltzius, who had visited Aegidius in 1590 during his own trip to Rome.[@limouze1989, 4--6.]
-
-Aegidius found his greatest success in Prague as a court engraver for the Hapsburg emperors Rudolf II, Matthias, and Ferdinand II.
-While there, he produced prints after court painters Bartholomeus Spranger, Joseph Heintz, and Hans von Aachen.
-Aegidius also exhibited his versatility of subject matter, engraving landscape prints after Paul Bril and Jan Brueghel (with whom he may have had contact when visiting from in 1593) as well as Roelandt Savery and Pieter Stevens, who had crafted many landscape drawings while working at Rudolf II's court.[@limouze1989, 10] (Figure \@ref(fig:sadeler-savery))
-Even in his late career, however, Sadeler maintained an awareness of developments in Antwerp; his original print _Charity, or Maternal Love_, may well have been inspired by Rubens' own approach to rendering feminine beauty.[@limouze1989, 16] (Figure \@ref(fig:sadeler-maternal))
-
-```{r sadeler-savery, fig.cap="Aegidius Sadeler after Roelandt Savery, *Man and four goats before a waterfall*, from a series of six landscapes, 1597--1629. Engraving and etching, 22.2 x 28.6 cm. Rijksmuseum, Amsterdam"}
-include_graphics("assets/images/sadeler_savery.jpg")
-```
-
-```{r sadeler-maternal, fig.cap="Aegidius Sadeler, *Charity, or Maternal Love*, c. 1620. Engraving, 30 x 21.4 cm. Biblioteca Nacional de Portugal, Lisbon."}
-include_graphics("assets/images/sadeler_maternal.jpg")
-```
-
+Aegidius found his greatest success in Prague as a court engraver for the Hapsburg emperors Rudolf II, Matthias, and Ferdinand II.[@limouze1989, 10]
 Though he does not rank among the most central Flemish print producers of the seventeenth century, Jan Sadeler's son Justus also played a significant role in building the family's ties to Italy.[On Justus, see @senechal1990.]
-Born in Antwerp 1583, a surviving contract places Justus in Venice as early as 1599.
-There he established and engraving and publishing business that left a significant mark on Venetian print culture of the early seventeenth century.[@omodeo1965, 8--9.]
 Justus inherited most of his father's plates, and would continue to publish impressions of these older designs while working in Italy.
-Aegidius Sadeler even ensured that the print privilege he acquired from Emperor Matthias would extended to Justus' publications in Venice.[@senechal1990, 28]
 These bonds of family, combined with their shared talents with the burin, allowed the Sadelers to patch together a remarkably successful printmaking dynasty in spite of their itinerant lives.
-
-## Cornelis Bloemaert
 
 In the north, traveling printmakers were also an exception to the overall preference by Dutch print producers for domestic collaborators in the seventeenth century.
 Figure \@ref(fig:rkm-dutch-ind-eii) shows a sample of the most central participants in the Dutch printmaking network across several different periods.[^infl]
 While the _overall_ Dutch EI index was negative in the mid-seventeenth century, it is easy to find examples of Dutch artists who did a great deal of international work, just as it is common to find ones who worked almost exclusively with other Dutch artists and publishers.
-That said, artists who were remarkably central in the European network at large tended to be ones that were also central "at home".
-No matter which nationality one looks at, the more central an artist was, the more likely they were to make most of their connections to artists from the same region.
-For example, major Dutch publishers like Hendrick Hondius I and Crispijn de Passe I increasingly turned to native Dutch artists for designs, while applying to the States General, rather than foreign sovereigns, for privileges.[@orenstein1996, 47.]
-Only a handful of the most active and influential Dutch printmakers during the seventeenth century did much of their work with foreign artists and publishers.
-And still, interesting exceptions stand out.
 
 ```{r rkm-dutch-ind-eii, fig.fullwidth = TRUE, fig.cap="The individual EI indices of highly-central Dutch printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
 top_eiis <- function(dat, yr, nat, n = 10) {
@@ -713,23 +706,19 @@ grid::grid.draw(cbind(
 
 [^infl]: Influence is ranked by degree centrality, the metric used in chapter 2, figures \@ref(fig:bm-dutch-ind-cent) and \@ref(fig:bm-flem-ind-cent.)
 
-One such printmaker was Cornelis Bloemaert the Younger, who was born in Utrecht around 1603.[@roethlisberger1993, 513--526.]
+One exceptin was Cornelis Bloemaert the Younger, who was born in Utrecht around 1603.[@roethlisberger1993, 513--526.]
 He initially studied painting with his father, Abraham Bloemaert, but would later train as an engraver with Crispijn de Passe.[@baldinucci1767, 131--138]
-Bloemaert produced several prints after designs by his father during his early years in Utrecht, including both single-sheet prints as well as a series of small peasant scenes (Figure \@ref(fig:bloemaert-otia).)
 He left his hometown for Paris in 1630, where he would work for three years engraving designs after various French masters.
 By 1634, he had arrived in Rome, where he joined the "Bentvueghels", an expatriate fraternity of northern European artists working in Rome.
 He was one of a handful of engravers who would come to join the group, including the Flemish engraver Michel Natalis, and Reiner Persijn from Alkmaar, who studied with Bloemaert while in Rome.[@hoogewerff1952, 71]
-Following the tradition of members of the Bentvueghels, Bloemaert adopted the playful alias "Winter".[While the meaning of some of these nicknames has been preserved, Bloemaert's remains a mystery; @hoogewerff1952, 132]
 While in Rome, he made a living producing engravings mostly after Italian works.
 Bloemaert contracted with the Marchese Vincenzo Giustiniani to produce a series of plates depicting the Marchese's collection of antique statuary (Figure \@ref(fig:bloemaert-rivergod).)
 Though this project was cut short by the Marchese's death, Bloemaert would continue to produce engravings primarily after the art collections of major patrons, producing prints after diverse Italian masters such as Pietro da Cortona, Andrea Sacchi, Guido Reni, and Raphael.
 He would work in Rome until his death in 1692.
 
-```{r bloemaert-otia, fig.cap="Cornelis Bloemaert II after Abraham Bloemaert, title page for *Otia delectant*, c. 1625. Engraving, 10.8 x 15.3 cm. Rijksmuseum, Amsterdam."}
-include_graphics("assets/images/bloemaert_otia.jpg")
-```
+(ref:bloemaert-rivergod) Cornelis Bloemaert II after a drawing by Giovanni Citosibio Guidi, *River God* from *Galleria Giustiniana del Marchese Vincenzo Giustiniani* (Rome, 1636). Engraving, 23.1 x 21.5 cm. Rijksmuseum, Amsterdam.
 
-```{r bloemaert-rivergod, fig.cap="Cornelis Bloemaert II after a drawing by Giovanni Citosibio Guidi, *River God* from *Galleria Giustiniana del Marchese Vincenzo Giustiniani* (Rome, 1636). Engraving, 23.1 x 21.5 cm. Rijksmuseum, Amsterdam."}
+```{r bloemaert-rivergod, fig.cap="(ref:bloemaert-rivergod)"}
 include_graphics("assets/images/bloemaert_rivergod.jpg")
 ```
 
@@ -750,7 +739,9 @@ He apprenticed with Pierre van Schuppen, member of a small group of Flemish engr
 Blooteling met another mezzotint innovator in Paris named Wallerant Vaillant.
 Blooteling and Vaillant would both return to Amsterdam in 1665, where they continued to work together closely, sharing _modelli_ and print designs that Blooteling had inherited from Van Daelen.[@curd2010, 129--133]
 
-```{r blooteling-rupert, fig.margin = TRUE, fig.cap="Abraham Blooteling, *Portrait of Rupert, Prince of the Rhine*, 1673. Engraving, 39 x 29 cm. Rijksmuseum, Amsterdam."}
+(ref:blooteling-rupert) Abraham Blooteling, *Portrait of Rupert, Prince of the Rhine*, 1673. Engraving, 39 x 29 cm. Rijksmuseum, Amsterdam.
+
+```{r blooteling-rupert, fig.margin = TRUE, fig.cap="(ref:blooteling-rupert)"}
 include_graphics("assets/images/blooteling_rupert.jpg")
 ```
 
@@ -765,49 +756,14 @@ He ensured that his apprentice, Jan van Munnickhuijsen, would be able to accompa
 Like Bloemaert in Rome, Blooteling also leveraged his print subjects and patrons to attract more business once in the new city.
 One of his first publications were engraved portraits of Rupert and Charles: gifts to those who had invited him, but also a signal to potential English clients of his ability to engrave refined likenesses. (Figure \@ref(fig:blooteling-rupert))
 Blooteling would continue to differentiate himself by introducing print portrait series (a staple of Dutch artistic printmaking) to London audiences.[@curd2010, 137]
-
-Bloemaert's other distinguishing trait was his unparalleled skill in mezzotint, from which he could extract remarkably subtle tonal gradations.
-Blooteling deployed this talent to great effect in his reproductive portrait prints after Van Dyck, in which he expertly captured the Flemish painter's gauzy brushwork. (Figure \@ref(fig:blooteling-van-dyck))
-The technique took late seventeenth-century London by storm, as the city lacked the mature engraving and etching talent that Holland had enjoyed for decades.
-Interestingly, Blooteling's patron Print Rupert was himself an amateur practitioner of mezzotint, and was erroneously credited with its invention by contemporaries.[@wuestman1995, 71]
-Blooteling hired a range of apprentices in London who would have provided invaluable help in the laborious process of preparing mezzotint plates, supporting his prolific output.
 Like Bloemaert, Blooteling derived long-term benefits from local networks he worked to establish while abroad.
 Even after returning to Amsterdam in 1678, Blooteling continued to market his prints in England via his London contacts.[@curd2010, 153]
-However, he clearly understood the distinct tastes of the Amsterdam market as well, producing more etchings and engravings after Dutch subjects in this final phase of his career. (Figure \@ref(fig:blooteling-ruisdael))
-
-```{r blooteling-van-dyck, fig.cap="Abraham Blooteling, after Sir Anthony van Dyck, *The Apostle Paul*, 1652--1690. Mezzotint, 35.2 x 27.4 cm. Rijksmuseum, Amsterdam."}
-include_graphics("assets/images/blooteling_van_dyck.jpg")
-```
-
-```{r blooteling-ruisdael, fig.cap="Abraham Blooteling, after Jacob van Ruisdael, *View of the Marina Outside the Blaubrug*, from the series *Amstelgezichten*, 1655--1690. Etching, 16.5 x 21.8 cm. Rijksmuseum, Amsterdam."}
-include_graphics("assets/images/blooteling_ruisdael.jpg")
-```
+However, he clearly understood the distinct tastes of the Amsterdam market as well, producing more etchings and engravings after Dutch subjects in this final phase of his career.
 
 For all the international connections they made, it is interesting to note that both Bloemaert and Blooteling relied heavily on fellow expatriates when they made their moves to Paris, Rome, and London.
 This nuance is an important to bear in mind when looking at quantitative results that suggest both engravers did most of their work with foreigners.
 Both of these cases also demonstrate the importance of network connections that do not fall within the set of direct ties of artistic source, printmaker, and publisher captured by the datasets used for this study.
 The funding and social connections of family members, patrons, and even portrait subjects were integral to both Bloemaert's and Blooteling's success.
-
-## Turning Away from the Low Countries
-
-While Dutch print producers' overall preference for domestic connections continued into the early eighteenth century (Figure \@ref(fig:all-nats-eii)), some central print producers increasingly maintained active international business.
-The French-born Bernard Picart dominated the print trade in Amsterdam soon after moving there in 1711 at the age of 38.
-Picart would train many Dutch engravers in a formally-regulated, French-style academy, the _Amsterdamse tekenschool_, emulating his own training in the French academic manner.
-And while he would spend the rest of his life building a successful publishing house in Amsterdam, he would maintain agents in Paris to promote his work; many of his prints published in the Netherlands have also been recorded in contemporary auctions in Paris.[@barthelings2010, 49.]
-Pieter Schenck is another name that ranks among the most central printmakers in 1715.
-He was an engraver and mezzotinter of German birth who came to the Amsterdam around 1683--4 and built a thriving business split between Amsterdam and Leipzig.[@waller1974, 287--288]
-Though they were comparatively prolific, Picart and Schenck were counterbalanced by a "long tail" of domestically-inclined printmakers.
-These domestically-centered Dutch artists may only have produced a handful of prints each, but their output, in aggregate, outnumbered that of Picart and Schenck.
-
-In the Northern Netherlands, passing economic depression in the late seventeenth century, and hence contraction in the local print market, may have spurred some artists to expand their business beyond the Dutch Republic.
-Yet, as we saw with Abraham Bloemaert, some returned home and brought their new international connections with them.
-Sustained economic stagnation in the southern Netherlands, on the other hand, gutted their printmaking industry.
-Without a critical mass of fellow print producers, many Flemish printmakers and publishers left the country entirely:
-Adam Frans van der Meulen, a painter and draughtsman who made designs for several prints, decamped to Paris by 1664, joining the service of Louis XIV in designing both prints and tapestries.[@korthalsaltes2010, 181.]
-Likewise, Cornelis Martinus Vermeuelen (no known relation to Van der Meulen), a printmaker born in Antwerp in 1644, moved to Paris to produce prints (mostly formal portraits) after Pierre Mignard, Hyacinthe Rigaud, among others.
-Vermeulen also made several prints after Adriaen van der Werff, a Rotterdam painter heavily influenced by French prints.
-These shifts presaged a sea change in the importance of the Low Countries to European print production.
-By the mid-eighteenth century the center of gravity in the world of European printmaking had shifted from Antwerp and Amsterdam to Paris, where a regimented system of training, privileges, and regulations produced a wholly different ecosystem for making prints.[@fuhring1985; @fuhring1986]
 
 # Conclusion: Continuity and Change
 
