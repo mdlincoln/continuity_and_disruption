@@ -3,9 +3,10 @@ title: "Continuity and Disruption in European Networks of Print Production, 1550
 author: "Matthew Lincoln"
 documentclass: article
 output: 
-  bookdown::word_document2
-bibliography: /Users/admin/Zotero/zotero.bib
-csl: /Users/admin/Zotero/styles/chicago-fullnote-bibliography.csl
+  bookdown::tufte_handout2:
+    toc: false
+bibliography: ../zotero.bib
+csl: chicago-fullnote-bibliography.csl
 ---
 
 ```{r libraries, include = FALSE}
@@ -20,7 +21,7 @@ library(broom)
 library(igraph)
 library(knitr)
 library(bookdown)
-opts_chunk$set(echo = FALSE, cache = TRUE, sanitize = TRUE, warning = FALSE, dpi = 300, out.width = "6in")
+opts_chunk$set(echo = FALSE, cache = TRUE, sanitize = TRUE, warning = FALSE, dpi = 300, fig.align = "center", fig.width = 9, fig.height = 7)
 ```
 
 # Introduction
@@ -44,28 +45,22 @@ The _consumption_ of prints was clearly internationalized by the early 1500s.
 To what extent, however, was their _production_ internationalized?
 
 Starting from the focal point of the northern Netherlands, an early modern printmaking center with both longstanding international influence, as well as a strong domestic print production capacity, this paper will offer a novel perspective on the interconnection of printmaking communities within the larger European world of artistic prints.
-Using macro-scale network analysis to characterize the potential historical professional networks that we can infer from two catalogs of surviving print impressions, we will address several questions:
+Using macro-scale network analysis to characterize the potential historical professional networks that we can infer from two catalogs of surviving print impressions, several questions will be addressed:
 
 1. How did shifts in the northern and southern Netherlands compare to those in other prominent printmaking centers in Italy, Germany, or France? 
 2. How varied were individuals' strategies when it came to domestic and international production? 
 3. More crucially, were these changes in this production balance determined by specific historical events, or, rather, subject to larger structural incentives coupled to _longue durée_ population shifts across Europe over this period?
 
-While there are, indeed, some dramatic, and dramatically fast, shifts to and from international vs. domestic print production concentraiton,shared patterns of domestic and international production shifts across other countries in this period suggest that most of these seemingly-dramatic changes can be explained by gradual demographic trends and the relative maturity of different regional print production communities.
+While there are, indeed, some dramatic, and dramatically fast, shifts to and from international vs. domestic print production concentration,shared patterns of domestic and international production shifts across other countries in this period suggest that most of these seemingly-dramatic changes can be explained by gradual demographic trends and the relative maturity of different regional print production communities.
 That said, key exceptions indicate the occasional power of disruptive events, and even single individuals, to affect a much larger world of printmaking.
 
-# Dutch Internationalism / Dutch Regionalism
+# Background: Dutch Internationalism / Dutch Regionalism
 
 The early history of Dutch printmaking is tightly interwoven with international influences.
 Lucas van Leyden attracted international acclaim for his masterful handling of the burin.
-Among his admirers was no less than the Nuremberg master Albrecht Dürer, who made a point to visit the Leiden artist during a journey to the Netherlands in 1520.
-Prints played a variety of roles on this trip.
-Dürer had brought not only his acute eye to the Netherlands (he produced many sketches while there), but also a sizable inventory of woodcut and engraving impressions.
-He carried no less than thirty four copies of his _Small Passion_ series, and, according to his diary, gifted a complete set of his printed oeuvre on several occasions.[@marlier1971]
-Dürer engaged in mutual artistic gift giving with several Netherlandish artists during his trip to the Netherlands in 1520--1521, using print impressions as well as the occasional drawn portrait as a conduit to exchange visual sources and to signal mutual esteem.[On Dürer and artistic gift giving, see @nesselrath1993, 376]
-Significantly, Dürer would exchange 8 florins' worth of his own prints for a complete set of Lucas' own oeuvre when the two met in Leiden on June 10th, 1520.[@marlier1971, 29]
-
-These influences extended south of the Alps, too.
-In Italy, Marcantonio Raimondi frequently adopted Lucas' silvery landscape backgrounds for use in his own prints, such as the _Climbers_ of 1510 that melds a quotation from Lucas with figures derived from Michelangelo's renowned drawing of the _Battle of Cascina_.^[On Marcantonio's quotation of Lucas, see @barnes2010, 16.] (Figure \@ref(fig:lucas-raimondi))
+Among his admirers was no less than the Nuremberg master Albrecht Dürer, who made a point to visit the Leiden artist during a journey to the Netherlands in 1520, where he would exchange 8 florins' worth of his own prints for a complete set of Lucas' own oeuvre when the two met in Leiden.[@marlier1971, 29]
+The influence of Lucas' prints extended south of the Alps, too.
+In Italy, Marcantonio Raimondi frequently adopted Lucas' silvery background designs for use in his own prints, such as the _Climbers_ of 1510 that melds a landscape quoted from Lucas with figures derived from Michelangelo's renowned drawing of the _Battle of Cascina_.^[On Marcantonio's quotation of Lucas, see @barnes2010, 16.] (Figure \@ref(fig:lucas-raimondi))
 
 ```{r lucas-raimondi, fig.cap="(left) Lucas van Leyden designed and engraved, *Mohammed and the Monk Sergius*, 1508. Engraving. British Museum, London. (Image © Trustees of the British Museum.) (right) Marcantonio Raimondi after Michelangelo Buonarotti, *The Climbers*, 1510--1520. Engraving, British Museum, London. (Image © Trustees of the British Museum.)"}
 include_graphics("assets/images/lucas_raimondi.jpg")
@@ -73,59 +68,31 @@ include_graphics("assets/images/lucas_raimondi.jpg")
 
 Beyond these individual artistic connections, collaborative print production began to take on international dimensions with the rise of large print production houses and the professionalization of engraving in the mid-sixteenth century.
 Some Dutch printmakers had built thriving careers creating engravings for Italian painters in Venice and Rome, enjoying the fruits of northern Europeans' reputation for printmaking skill that had been promulgated by Giorgio Vasari.[@landau1983; @gregory2012, 2--4.]
-Cornelis Cort, in Rome from 1565--1578, found great success as a printmaker for major Italian painters such as Titian (Figure \@ref(fig:cort-titian-annunciation)) Giulio Clovio, Girolamo Muziano, and Federico Zuccaro.[@sellink1994; @sman2005, 251--252]
+Cornelis Cort, in Rome from 1565--1578, found great success as a printmaker for major Italian painters such as Titian, Giulio Clovio, Girolamo Muziano, and Federico Zuccaro.[@sellink1994; @sman2005, 251--252]
 In addition to German and Italian centers, the mid-sixteenth-century publishing house of Hieronymus Cock, _Aux Quatre Vents_, proved especially influential to multiple generations of Dutch printmakers.[For example, during his early career in Haarlem between 1557--1570, Philips Galle engraved several prints to be published in Antwerp by Cock; @sellink1997]
 
-```{r cort-titian-annunciation, fig.height=4, fig.cap="Cornelis Cort, after Titian's altarpiece in S. Salvatore, Venice, published by Antonio Lafréri, *Annunciation*, c. 1566. Engraving, 41.5 x 47.6 cm. British Museum, London. (Image © Trustees of the British Museum.)"}
-include_graphics("assets/images/cort_titian_annunciation.jpg")
+```{r goltzius-wedding, fig.cap="Hendrick Goltzius, after Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1587. Engraving,  43.5 cm. x 86.1 cm. Rijksmuseum, Amsterdam."}
+include_graphics("assets/images/goltzius_wedding.jpg")
 ```
 
 Galle's experience would be mirrored in the following generation of Dutch printmakers.
 Early in his career, Hendrick Goltzius produced many reproductive prints for Galle after a wide range of artists.
 Goltzius lived in Haarlem while Galle remained based in Antwerp, working via correspondence much as Galle had done for Cock in his early years.
 Goltzius would continue this model of remote collaboration even after setting up his own independent studio in 1582.
-The collaboration between Hendrick Goltzius and Bartholomeus Spranger, court painter to Rudolf II, illustrates well how the design, cutting, and marketing of a print could easily take on an international scope.
-In 1585 or 1586, Spranger sent a large, fully-finished drawing (Figure \@ref(fig:spranger-wedding)) from the Prague court to Haarlem, where Goltzius had recently established his own independent studio.
-By 1587, Goltzius had transformed Spranger's drawing into a masterful large-scale print dedicated to Wolfgang Rump, an official at the Prague court. (Figure \@ref(fig:goltzius-wedding))
-Early proofs of the print suggest that multiple versions were sent back and forth between Prague and Haarlem before the print was finalized.[Surviving proofs by Jan Muller bear hand-drawn corrections by Spranger, suggesting the painter maintained close involvement in the print production process; @kok1994, 233; also see @strech1998, 201--203.]
-This print would be marketed at the international Frankfurt book fair in September of that same year.[@leeflang2003, 82--83, cat. 28]
-
-```{r spranger-wedding, fig.cap="Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1575--1587. Pen in brown, brush in grey, heightened with white gouache over a sketch in black chalk on paper coated with a light grey preparation, indented for transfer, 39.7 cm. x 83.4 cm. Rijksmuseum, Amsterdam"}
-include_graphics("assets/images/spranger_wedding.jpg")
-```
-
-```{r goltzius-wedding, fig.cap="Hendrick Goltzius, after Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1587. Engraving,  43.5 cm. x 86.1 cm. Rijksmuseum, Amsterdam."}
-include_graphics("assets/images/goltzius_wedding.jpg")
-```
-
-In the first decades of the seventeenth century, Haarlem printmakers Claesz Jansz Visscher, Esaias van de Velde I, Willem Buytewech, Hercules Segers, and Jan van de Velde II, began to produce their own versions of the local, rustic landscape view heavily inspired by the _Small Landscapes_ (Figure \@ref(fig:evdv) ).[On the relationship of the _Small Landscapes_ to the printed landscape tradition in Haarlem, see @onuf2011; @onuf2014]
-These images, which highlighted specific local landmarks as well as more generalized "Dutch" views, featured distinctive elements such as rolling dunes, canals, and signs of local industry such as linen bleaching.
-
-This local turn in printmaking has been connected with the coalescing of a Dutch national identity during the course of the revolt against Spain between 1568--1648.[@freedberg1980, 11--15; @levesque1994, ch. 6.]
-All of these printmakers joined the Haarlem guild in 1612, forming a critical mass of pioneering talent who each took up the printed landscape as their subject in one form or another.
-These landscapes ranged in specificity and style.
-They could take the form of specific locations, such as Esaias van de Velde's rendering of the fort at Tholen, a structure that may have held particular importance for viewers seeing it just a few years after the signing of a temporary truce between the United Provinces and Spain in 1609. (Figure \@ref(fig:evdv))
-Other landscape prints by these Haarlem pioneers were more generalized, albeit indisputably "Dutch", views. (Figure \@ref(fig:jvdvII-winter))
-Nor was the Flemish influence on the Dutch landscape tradition limited to seemingly-real landscapes:
-Jan van de Velde II would commonly mix fantastic landscapes (Figure \@ref(fig:jvdvII-castle)) in extended print series that also included both specific landmarks as well as generalized Dutch scenes.[@fucci2015, 4.]
-
-```{r msl, fig.cap="Johannes and Lucas van Doetecum after the Master of the Small Landscapes, *Village Road with Draw Well*, published 1559/1561. Etching, retouched with engraving, 13.3 x 19.5 cm. National Gallery of Art, Washington. (Image courtesy National Gallery of Art, Washington.)"}
-include_graphics("assets/images/msl.jpg")
-```
+The collaboration between Hendrick Goltzius and Bartholomeus Spranger, court painter to Rudolf II, illustrates well how the design, cutting, and marketing of a print could easily take on an international scope.[@leeflang2003, 82--83, cat. 28] (Figure \@ref(fig:goltzius-wedding))
 
 ```{r evdv, fig.cap="Esaias van de Velde, *Fort with defenses at Tholen on the Scheldt*, 1615--1616. Etching, 8.3 x 16.9 cm. Rijksmuseum, Amsterdam."}
 include_graphics("assets/images/evdv.jpg")
 ```
 
-```{r jvdvII-winter, fig.cap="Jan van de Velde II, *Winter Landscape*, c. 1615--1646. Etching. National Gallery of Art, Washington. (Image courtesy National Gallery of Art, Washington.)"}
-include_graphics("assets/images/jvdvII_winter.jpg")
-```
+In the first decades of the seventeenth century, Haarlem printmakers Claesz Jansz Visscher, Esaias van de Velde I, Willem Buytewech, Hercules Segers, and Jan van de Velde II, began to produce their own versions of the local, rustic landscape view first popularized by Hieronymus Cock in Antwerp.[On the relationship of the anonymously-designed _Small Landscapes_ to the printed landscape tradition in Haarlem, see @onuf2011; @onuf2014]
+These images, which highlighted specific local landmarks as well as more generalized "Dutch" views, featured distinctive elements such as rolling dunes, canals, and signs of local industry such as linen bleaching.
+This local turn in printmaking has been connected with the coalescing of a Dutch national identity during the course of the revolt against Spain between 1568--1648.[@freedberg1980, 11--15; @levesque1994, ch. 6.]
+All of these printmakers joined the Haarlem guild in 1612, forming a critical mass of pioneering talent who each took up the printed landscape as their subject in one form or another.
 
-```{r jvdvII-castle, fig.cap="Jan van de Velde II, *October* from the series *Twelve Months*, 1616. Etching. National Gallery of Art, Washington. (Image courtesy National Gallery of Art, Washington.)"}
-include_graphics("assets/images/jvdvII_castle.jpg")
-```
 
 This international flow of images and influence did not occur in a vacuum.
+
 In the late sixteenth century, the northern Netherlands entered a golden age of economic growth thanks to their unmatched control of international sea trade around the world.
 As their prosperity increased, many Dutch authors, musicians, and artists sought to add internationalizing elements to their works, as a way of asserting Dutch cultural legitimacy in the broader world of early modern Europe.[On the interest in legitimizing Dutch culture on the European stage, see @kettering1983]
 Several waves of Dutch artists also traveled south to study and paint in Italy, establishing an expatriate community in Rome.[On seventeenth-century Dutch artists' interest in Italy, see @schatborn2001; @harwood2002]
@@ -139,7 +106,8 @@ With avenues to international collaboration cut off, and an increasing amount of
 Now, rather than having to turn to international partners to produce prints, Dutch artists, printmakers, and publishers could increasingly work with their own countrymen.
 A flourishing Dutch art market, both in Amsterdam as well as in smaller towns like Utrecht and Delft, appears to have supported a more decentralized print production network than had existed in the late sixteenth century.[@lincoln2016-2]
 It is possible that this same decentralization may have spurred more domestic collaboration as well.
-To help illuminate how the balance of these incentives changed between 1550--1750, we can turn to network analysis.
+
+To help lcarify how these competing incentives may have played out over the course of the long seventeenth century, we can turn to network analysis to provide a novel perspective.
 
 # Methodology: Measuring International Interaction
 
@@ -155,10 +123,9 @@ Together, both perspectives are more valuable than either one seen alone.
 
 ## Data
 
-The data for this study have been drawn from the collections of the British Museum in London (hereafter BM) and the Rijksmuseum in Amsterdam (hereafter RKM).
-Each print in the collection is treated as evidence of a professional relationship (whether direct or indirect) at a certain point in time.
-For example, the print in Figure \ref@(fig:goldzius-wedding) would be used to create a connection between 
-[For an in-depth discussion of these data and the methodology for inferring production networks from object-based collections, see @lincoln2016-2.]
+The data for this study have been drawn from the collections of the British Museum in London (hereafter BM) and the Rijksmuseum in Amsterdam (hereafter RKM). (Table \@ref(tab:nationality-counts))
+Both of these collections feature broad and deep collections of European prints (and Dutch and Flemish prints in particular) from this period.
+Moreover, each museum has released meticulous curatorial data aobut these collections amenable to computational processing.
 
 ```{r nationality-counts}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
@@ -195,6 +162,69 @@ bm_print_count %>%
   
 ```
 
+Each print in the collection is treated as evidence of a professional relationship (whether direct or indirect) at a certain point in time.
+For example, the print in Figure \@ref(fig:goltzius-wedding) would be used to create a connection between Hendrick Goltzius and Bartholomeus Spranger during the year of 1587.[For an in-depth discussion of these data and the methodology for inferring production networks from object-based collections, see @lincoln2016-2, 138-141.]
+Rather than producing a single network encompassing every constitutent and connection from 200 years of print production, we can instead takeunderstand how this network change over time by constructing snapshots, or slices, of the entwork as it may have appeared in a given period of time based on the surviving evidence that we have.
+
+```{r timeslice, fig.cap="Examples. Previously published in Lincoln 2016."}
+library(RColorBrewer)
+
+yr_graph <- function(early, late) {
+
+  sg_edge <- bm_print_edges %>%
+    filter(between(datestart, early, late)) %>%
+    semi_join(bm_print_nodes %>% filter(birth <= late, death >= early), by = c("target" = "id")) %>%
+    semi_join(bm_print_nodes %>% filter(birth <= late, death >= early), by = c("source" = "id")) %>%
+    semi_join(bm_node_nationalities %>% filter(nationality == "Dutch"), by = c("target" = "id")) %>%
+    semi_join(bm_node_nationalities %>% filter(nationality == "Dutch"), by = c("source" = "id"))
+
+  sg_node <- bm_print_nodes %>% filter(id %in% union(sg_edge$target, sg_edge$source))
+
+  sg <- graph_from_data_frame(sg_edge, directed = FALSE, vertices = sg_node)
+  sg <- simplify(sg)
+  big_c_memb <- components(sg)$membership == 1
+
+  # Big component
+  bsg <- induced_subgraph(sg, vids = V(sg)[big_c_memb])
+
+  V(bsg)$degree <- degree(bsg, normalized = TRUE)
+
+  # Top names
+  top_names <- V(bsg)$degree %in% tail(sort(V(bsg)$degree), 10)
+
+  dpal <- brewer.pal(9, name = "Greens")[1:7]
+
+  V(bsg)$label <- ifelse(top_names, V(bsg)$realname, "")
+  V(bsg)$degcat <- cut(V(bsg)$degree, breaks = unique(quantile(V(bsg)$degree, probs = seq(0, 1, 0.1))))
+  V(bsg)$color <- dpal[V(bsg)$degcat]
+  V(bsg)$frame.color <- "gray"
+  E(bsg)$color <- "gray"
+  V(bsg)$size = 30 * V(bsg)$degree + 3
+
+  return(bsg)
+}
+
+g1 <- yr_graph(early = 1580, late = 1590)
+g2 <- yr_graph(early = 1640, late = 1650)
+
+
+par(mfrow = c(1, 2), mar = c(0, 0, 0, 0))
+plot(
+  g1,
+  layout = layout_with_fr,
+  vertex.label.family = "Helvetica",
+  vertex.label.color = "black",
+  vertex.label.cex = 0.4)
+text(0, 1.2, labels = "1580-1590")
+plot(
+  g2,
+  layout = layout_with_fr,
+  vertex.label.family = "Helvetica",
+  vertex.label.color = "black",
+  vertex.label.cex = 0.4)
+text(0, 1.2, labels = "1640-1650")
+```
+
 When, and to what extent, do actors who belong to one category make connections to each other, versus to actors in another?
 This is a common question in network analysis, and can be measured by using the group-external/group-internal index (hereafter EI index).[See, for example, @matos2014, 15]
 The EI index measures the balance between the number connections actors made within a specified group (in this case, nationality) versus those they made to actors outside that group.[^krackhardt] (Figure \@ref(fig:eii-example))
@@ -202,6 +232,16 @@ This index can work at several scales.
 It can be used to quantify an entire group's propensity to connect with other groups (e.g. Dutch artists connecting to non-Dutch artists).
 A positive EI index indicates that nodes within that group made most of their connections to nodes belonging to other groups, while a negative EI index indicates those nodes made most of their connections internally.
 One can also measure the EI index of a single individual, comparing the number of connections they make to members of their own group, versus to those belonging to another.
+
+[^krackhardt]: The EI index comprises the ratio of the difference between the number of a group's external ($n_e$) and internal ($n_i$) links to the total number of links the group makes:
+$$\epsilon = \frac{n_e - n_i}{n_e + n_i}$$
+
+    Originally proposed in [@krackhardt1988, 127--129]; also see [@hanneman2005, 128--132].
+
+Demarcating the "borders" of nationality in the early modern period is an inherently tricky problem, perhaps no more so than in the case of the Low Countries during the age of the Eighty Years War.[On the challenge of constructing the right national context for Netherlandish printmakers in particular, see @kok2015, 348.]
+The Dutch 1581 Act of Abjuration (in the wake of the Union of Utrecht two years prior) marks the official schism between the seventeen United Provinces in the northern Netherlands and the territories of the Spanish-controlled southern Netherlands.
+And while this break is a convenient historical landmark, it was soon followed by large waves of emigration from the south as Protestants and other non-Catholics fled religious persecution in Antwerp for the relatively more tolerant north.
+Many of these migrants were painters like Gillis van Coninxloo, Clara Peeters, and Roelandt Savery, who had an abiding impact on artistic development in the United Provinces.
 
 ```{r eii-example, fig.cap="A network with three groups of 20 nodes each. Group A is densely interconnected, so while its members do make some external connections, by in large they connect to each other. Therefore, that group has a negative EI index. Nodes in group B, on the other hand, make a slim majority of their connections externally, giving that group a positive index. Nodes in group C connect exclusively to each other, and so that group has the lowest possible EI index of -1."}
 a <- sample_gnm(20, 50)
@@ -247,91 +287,11 @@ c_int <- int_links(x, "C")
 c_ext <- ext_links(x, "C")
 c_eii <- eii(c_ext, c_int)
 
-fmt_eii <- function(group, ext, int, eii) {
-  paste0("Group ", group, "\n", ext, " external : ", int, " internal\nEI index = ", format(eii, digits = 2))
-}
-
-par(mar = c(0,0,0,15), xpd = TRUE)
-plot(x, vertex.size = 7)
-legend(x = 1.5, y = 1, legend = c(fmt_eii("A", a_ext, a_int, a_eii), fmt_eii("B", b_ext, b_int, b_eii), fmt_eii("C", c_ext, c_int, c_eii)), col = "black", pt.bg = pal, pch = 21, cex = 1, pt.cex = 1, box.lty = 0, y.intersp = 3)
+layout(matrix(c(1, 2), 1, 2, byrow = TRUE), widths = c(3,1))
+par(mar = c(1, 3, 1, 1))
+plot(x)
+barplot(c(a_eii, b_eii, c_eii), ylab = "EI Index", xlab = "Group", names.arg = c("A", "B", "C"), col = pal, ylim = c(-1, 1))
 ```
-
-[^krackhardt]: The EI index comprises the ratio of the difference between the number of a group's external ($n_e$) and internal ($n_i$) links to the total number of links the group makes:
-$$\epsilon = \frac{n_e - n_i}{n_e + n_i}$$
-
-    Originally proposed in [@krackhardt1988, 127--129]; also see [@hanneman2005, 128--132].
-
-[^oldmethod]: See [@lincoln2016-2] on inferring print production networks.
-
-```{r europe-pop, fig.cap = "Population of Europe.", fig.fullwidth = TRUE, out.width="6.5in", fig.width=6}
-region_map <- c(
-  "The Netherlands" = "Dutch",
-  "Belgium" = "Flemish",
-  "France" = "French",
-  "Germany" = "German",
-  "Switzerland" = "German",
-  "Northern Italy" = "Italian",
-  "Central Italy" = "Italian",
-  "Southern Italy" = "Italian",
-  "England and Wales" = "English",
-  "Scandinavia" = "Other",
-  "Scotland" = "Other",
-  "Ireland" = "Other",
-  "Spain" = "Iberian peninsula",
-  "Portugal" = "Iberian peninsula",
-  "Austria and Czechoslovakia" = "Other",
-  "Poland" = "Other"
-)
-
-pop_ratio <- europop %>%
-  mutate(nationality = plyr::revalue(region, region_map)) %>%
-  group_by(year, nationality) %>%
-  summarize(totalpop = sum(population, na.rm = TRUE)) %>%
-  group_by(year) %>%
-  mutate(ratio = totalpop/sum(totalpop)) %>%
-  ungroup()
-
-labs <- pop_ratio %>% filter(
-  (nationality == "Italian" & year == 1600) |
-    (nationality == "Other" & year == 1600) |
-    (nationality == "German" & year == 1550) |
-    (nationality == "French" & year == 1700) |
-    (nationality == "English" & year == 1750) |
-    (nationality == "Dutch" & year == 1650) |
-    (nationality == "Flemish" & year == 1750) |
-    (nationality == "Iberian peninsula" & year == 1600))
-
-ggplot(pop_ratio, aes(x = year, y = ratio)) +
-  geom_line(aes(color = nationality), size = 1) +
-  geom_label_repel(data = labs, aes(label = nationality), box.padding = unit(2, "lines")) +
-  scale_color_brewer(palette = "Set2", guide = FALSE) +
-  scale_y_continuous(labels = scales::percent) +
-  theme_bw() +
-  labs(x = NULL, y = "Share of urban European population")
-```
-
-```{r population-relationship, fig.cap = ""}
-pop_share <- europop %>%
-  mutate(nationality = plyr::revalue(region, region_map)) %>%
-  group_by(year, nationality) %>%
-  summarize(totalpop = sum(population, na.rm = TRUE)) %>%
-  mutate(popshare = totalpop/sum(totalpop)) %>%
-  inner_join(bm_APrPu_alive$nat_trends, by = c("nationality", "year")) %>%
-  mutate(printshare = artists_strict/sum(artists_strict, na.rm = TRUE))
-
-ggplot(pop_share, aes(x = popshare, y = printshare)) +
-  geom_smooth(color = "black", method = "lm") +
-  geom_point(aes(shape = nationality), size = 3) +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "Share of urban European population", y = "Share of active printmakers")
-```
-
-Just as network centrality could be measured at different points in time in the Dutch and Flemish printmaking communities in the previous chapter, an EI index can be measured for each regional/national community in the European network in this period.[^oldmethod]
-Demarcating the "borders" of nationality in the early modern period is an inherently tricky problem, perhaps no more so than in the case of the Low Countries during the age of the Eighty Years War.[On the challenge of constructing the right national context for Netherlandish printmakers in particular, see @kok2015, 348.]
-The Dutch 1581 Act of Abjuration (in the wake of the Union of Utrecht two years prior) marks the official schism between the seventeen United Provinces in the northern Netherlands and the territories of the Spanish-controlled southern Netherlands.
-And while this break is a convenient historical landmark, it was soon followed by large waves of emigration from the south as Protestants and other non-Catholics fled religious persecution in Antwerp for the relatively more tolerant north.
-Many of these migrants were painters like Gillis van Coninxloo, Clara Peeters, and Roelandt Savery, who had an abiding impact on artistic development in the United Provinces.
 
 Flemish printmakers also emigrated to the north, including Nicolaes de Bruyn and Jan van Londerseel, both of whom moved to Rotterdam (Londerseel by 1610, and De Bruyn by 1617).[@vandercoelen1996, 24]
 As noted earlier, Flemish landscapes were a crucial inspiration for the popular idiom of local Dutch countryside print series that were popularized by Haarlem printmakers in the 1610s.[On this influence, see @sluijter2009; @porras2013; @onuf2014.]
@@ -352,7 +312,7 @@ For the purposes of this analysis, these few artists will be treated as Flemish.
 
 # Results: Catalysts and Sudden Shifts
 
-```{r all-nats-eii, fig.cap="The EI Index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750. At 1, all connections made by an actor are to actors outside their national group. At 0, they have an equal number of internal and external connections. At -1, all their connections are to actors within their national group."}
+```{r all-nats-eii, fig.fullwidth = TRUE, fig.cap="The EI Index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750. At 1, all connections made by an actor are to actors outside their national group. At 0, they have an equal number of internal and external connections. At -1, all their connections are to actors within their national group.", fig.height=9, fig.width=7}
 intl_ties <- bind_rows(
   "BM" = bm_APrPu_alive$nat_trends %>% filter(nationality %in% bm_nats),
   "RKM" = rkm_APrPu_alive$nat_trends %>% filter(nationality %in% rkm_nats),
@@ -373,7 +333,7 @@ ggplot(intl_ties, aes(x = year, y = eii, color = dataset)) +
 ```
 
 Figure \@ref(fig:all-nats-eii) plots the changing EI index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750, comparing the trends observed from both the BM and RKM datasets.
-As in the study of centralization in chapter 2, we find that both museum databases return roughly equivalent results for both the Dutch and Flemish printmaking communities.
+Both museum databases return roughly equivalent results for both the Dutch and Flemish printmaking communities.
 Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production.
 The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
 Given the vast superiority of the BM's holdings in English prints (Table \ref@(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
@@ -420,9 +380,58 @@ Notably, the shifts were most abrupt in communities that were concentrated in pa
 This pattern suggests that larger structural and demographic causes may have been at play.
 
 Indeed, the pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to concentration in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))
-The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in French and English cities increased.
+The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in French and English cities increased.[^popnote]
 Dutch urban populations peaked in 1650, the same time that the Dutch printmaking network had the lowest EI index, i.e. the greatest preference for _internal_ connections.
 These observed shifts in international interaction may have been driven less by particular disruptive historical moments or artistic movements, and more by gradually building structural incentives powered by changes in populations and the necessarily-collaborative nature of print production.
+
+[^popnote]: These population data have been derived from [@devries1984], appendix 1. I have published a digitized version of this dataset in [@lincoln2015-2]
+
+```{r europe-pop, fig.cap = "Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. (\"Other\" regions include Scandinavia, Scotland and Ireland, and eastern Europe).", fig.fullwidth = TRUE}
+region_map <- c(
+  "The Netherlands" = "Dutch",
+  "Belgium" = "Flemish",
+  "France" = "French",
+  "Germany" = "German",
+  "Switzerland" = "German",
+  "Northern Italy" = "Italian",
+  "Central Italy" = "Italian",
+  "Southern Italy" = "Italian",
+  "England and Wales" = "English",
+  "Scandinavia" = "Other",
+  "Scotland" = "Other",
+  "Ireland" = "Other",
+  "Spain" = "Iberian peninsula",
+  "Portugal" = "Iberian peninsula",
+  "Austria and Czechoslovakia" = "Other",
+  "Poland" = "Other"
+)
+
+pop_ratio <- europop %>%
+  mutate(nationality = plyr::revalue(region, region_map)) %>%
+  group_by(year, nationality) %>%
+  summarize(totalpop = sum(population, na.rm = TRUE)) %>%
+  group_by(year) %>%
+  mutate(ratio = totalpop/sum(totalpop)) %>%
+  ungroup()
+
+labs <- pop_ratio %>% filter(
+  (nationality == "Italian" & year == 1600) |
+    (nationality == "Other" & year == 1600) |
+    (nationality == "German" & year == 1550) |
+    (nationality == "French" & year == 1700) |
+    (nationality == "English" & year == 1750) |
+    (nationality == "Dutch" & year == 1650) |
+    (nationality == "Flemish" & year == 1750) |
+    (nationality == "Iberian peninsula" & year == 1600))
+
+ggplot(pop_ratio, aes(x = year, y = ratio)) +
+  geom_line(aes(color = nationality), size = 1) +
+  geom_label_repel(data = labs, aes(label = nationality)) +
+  scale_color_brewer(palette = "Set2", guide = FALSE) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  labs(x = NULL, y = "Share of urban European population")
+```
 
 Although specific historical events may certainly have affected the ways that printmakers and publishers from different countries worked together, political changes or military conflicts were short-term happenings that occurred within a landscape of long-term incentives and population trends.
 The onset of the Dutch revolt, the blockade of the Scheldt, the end of the English civil war: each of these events may have tipped the balance of incentives and sparked a sudden shift in print producers' organization.
@@ -477,7 +486,6 @@ int <- function(g, classval) {
 eii <- function(g, classval) {
   ext <- length(E(g)[V(g)[class == classval] %--% V(g)[class != classval]])
   int <- length(E(g)[V(g)[class == classval] %--% V(g)[class == classval]])
-  print(paste(classval, ext, int))
   (ext - int) / (ext + int)
 }
 
@@ -509,7 +517,7 @@ By in large, the simulated networks return similar results to those found in the
 This underlines the major governing factor that regional print production capacity --- in other words, the size of the network --- had on any one community's balance of international versus domestic connections.
 However, there are several notable mismatches between the EI indices returned by these randomly generated networks, and those found in the BM and RKM data.
 
-```{r eii-sim, fig.cap="Random graph EI indices. The black lines show the EI indices observed in the BM and RKM data, while the gray ribbons show the range of results returned by the simulated networks. Some areas with diverging results are highlighted and annotated with some possible explanations."}
+```{r eii-sim, fig.fullwidth = TRUE, fig.width=6, fig.height=9, fig.cap="Random graph EI indices. The black lines show the EI indices observed in the BM and RKM data, while the gray ribbons show the range of results returned by the simulated networks. Some areas with diverging results are highlighted and annotated with some possible explanations."}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
 bm_fix_nats <- c("Dutch", "Flemish", "British", "French", "German", "Italian")
 rkm_nats <- c("Noord-Nederlands" = "Dutch", "Zuid-Nederlands" = "Flemish", "Engels" = "English", "Frans" = "French", "Duits" = "German", "Italiaans" = "Italian")
@@ -562,10 +570,10 @@ ggplot(sim_results, aes(x = year)) +
   geom_ribbon(aes(ymin = e05, ymax = e95), alpha = 0.7, fill = "#E41A1C") +
   geom_line(data = emp_results, aes(y = eii)) +
   geom_label_repel(data = filter(annotations, source == "BM"), aes(x = (start + end)/2, label = event_name), y = -1, size = 2) +
-  facet_grid(source ~ nationality) +
+  facet_grid(nationality ~ source) +
   ylim(-1, 1) +
   xlim(1550, 1750) +
-  theme_bw(base_size = 12) +
+  theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = NULL, fill = "model", y = "EI Index")
 ```
@@ -597,7 +605,7 @@ Several case studies of artists hailing from both the southern and northern Neth
 
 ## The Sadelers' International Connections
 
-```{r rkm-flem-ind-eii, fig.cap="The individual EI scores of highly-central Flemish printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
+```{r rkm-flem-ind-eii, fig.fullwidth = TRUE, fig.cap="The individual EI scores of highly-central Flemish printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
 top_eiis <- function(dat, yr, nat, n = 10) {
   dat %>%
     filter(!is.na(eii), nationality == nat, year == yr) %>%
@@ -670,7 +678,7 @@ For example, major Dutch publishers like Hendrick Hondius I and Crispijn de Pass
 Only a handful of the most active and influential Dutch printmakers during the seventeenth century did much of their work with foreign artists and publishers.
 And still, interesting exceptions stand out.
 
-```{r rkm-dutch-ind-eii, fig.cap="The individual EI indices of highly-central Dutch printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
+```{r rkm-dutch-ind-eii, fig.fullwidth = TRUE, fig.cap="The individual EI indices of highly-central Dutch printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
 top_eiis <- function(dat, yr, nat, n = 10) {
   dat %>%
     filter(!is.na(eii), nationality == nat, year == yr) %>%
@@ -742,7 +750,7 @@ He apprenticed with Pierre van Schuppen, member of a small group of Flemish engr
 Blooteling met another mezzotint innovator in Paris named Wallerant Vaillant.
 Blooteling and Vaillant would both return to Amsterdam in 1665, where they continued to work together closely, sharing _modelli_ and print designs that Blooteling had inherited from Van Daelen.[@curd2010, 129--133]
 
-```{r blooteling-rupert, fig.cap="Abraham Blooteling, *Portrait of Rupert, Prince of the Rhine*, 1673. Engraving, 39 x 29 cm. Rijksmuseum, Amsterdam."}
+```{r blooteling-rupert, fig.margin = TRUE, fig.cap="Abraham Blooteling, *Portrait of Rupert, Prince of the Rhine*, 1673. Engraving, 39 x 29 cm. Rijksmuseum, Amsterdam."}
 include_graphics("assets/images/blooteling_rupert.jpg")
 ```
 
@@ -801,23 +809,10 @@ Vermeulen also made several prints after Adriaen van der Werff, a Rotterdam pain
 These shifts presaged a sea change in the importance of the Low Countries to European print production.
 By the mid-eighteenth century the center of gravity in the world of European printmaking had shifted from Antwerp and Amsterdam to Paris, where a regimented system of training, privileges, and regulations produced a wholly different ecosystem for making prints.[@fuhring1985; @fuhring1986]
 
-# Conclusion: Tipping Points in International Print Production
+# Conclusion: Continuity and Change
 
-While literature on Netherlandish printmaking has plentiful examples of both international and domestic strains of Dutch and Flemish printmaking, most studies have focused on subject matter, rather than patterns of production.
-The detailed case studies of the sort that comprise most literature on artistic printmaking do not give clear answers to the simple, yet broad question:
-did Dutch and Flemish printmakers make most of their prints in collaboration with domestic partners, or foreign ones?
-And how did this balance change over time?
+What appears as dramatic, discontinuous change in one register is revealed to be gradual, continuous change in other.
 
-A data-driven analysis of these printmaking networks suggests that printmakers in the northern Netherlands did a majority of their collaborative work with artists and publishers outside of Holland, only shifting to majority-domestic work around 1570.
-Flemish printmakers and publishers, on the other hand, connected mostly internally up until around 1675, when they turned sharply outward.
-These production structure shifts present an alternative to the traditional stylistic histories of printmaking in the Netherlands:
-surprisingly, Dutch print producers inward shift occurred almost forty years before the "Haarlem pioneers" of the 1610s began to produce local Dutch landscape prints in large numbers.
-That both these shifts were rapid, rather than spanning multiple generations, is notable in itself.
-
-What is more, similar "tipping points" from foreign to domestic production occur in French and English print communities.
-This pattern suggests that these inward turns might not have been spurred solely by disruptive historical events, but may have been the result of the gradual spread of printmaking capacity across different European communities.
-Artists in countries with underdeveloped printmaking capacity --- few printmakers producing few prints --- would naturally gravitate towards more prominent and established centers, such as a major publishing house or court, outside their borders.
-As their home country began to develop more printmaking infrastructure, those artists could more easily find domestic collaborators.
-Not all the shifts in international print production can be explained through the changing size of these communities.
-Some historical events, like the invasion of Antwerp or the Italian plague of 1656, may have had a temporary effect on the ability of print producers to make either internal or external connections.
 However, like many complex systems, most of the larger structural changes these print production networks underwent, though unpredictable and sudden when viewed in the short term, can be understood as emergent consequences of slow-moving demographic change and the gradual transfer of technical and artistic knowledge between different European communities.
+
+# Bibliography
