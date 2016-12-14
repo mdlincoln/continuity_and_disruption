@@ -7,6 +7,7 @@ output:
     toc: false
     keep_tex: true
     number_sections: false
+  bookdown::word_document2: default
 bibliography: ../zotero.bib
 csl: chicago-fullnote-bibliography.csl
 ---
@@ -23,6 +24,7 @@ library(broom)
 library(igraph)
 library(knitr)
 library(bookdown)
+library(purrr)
 opts_chunk$set(echo = FALSE, cache = TRUE, sanitize = TRUE, warning = FALSE, dpi = 300, fig.align = "center", fig.width = 9, fig.height = 7)
 ```
 
@@ -521,9 +523,9 @@ By in large, the simulated networks return similar results to those found in the
 This underlines the major governing factor that regional print production capacity --- in other words, the size of the network --- had on any one community's balance of international versus domestic connections.
 However, there are several notable mismatches between the EI indices returned by these randomly generated networks, and those found in the BM and RKM data.
 
-(ref:eii-sim) Random graph EI indices. The black lines show the EI indices observed in the BM and RKM data, while the gray ribbons show the range of results returned by the simulated networks. Some areas with diverging results are highlighted and annotated with some possible explanations.
+(ref:eii-sim) Random graph EI indices. The black lines show the EI indices observed in the BM data, while the gray ribbons show the range of results returned by simulated networks of the same size and overall connectivity. Some areas with diverging results are highlighted and annotated with some possible explanations. For visual clarity, only the BM results are displayed here, however highligted areas mark significant divergences that appeared in simulations of both datasets.
 
-```{r eii-sim, fig.fullwidth = TRUE, fig.width=6, fig.height=9, fig.cap="(ref:eii-sim)"}
+```{r eii-sim, fig.fullwidth = TRUE, fig.height=8, fig.cap="(ref:eii-sim)"}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
 bm_fix_nats <- c("Dutch", "Flemish", "British", "French", "German", "Italian")
 rkm_nats <- c("Noord-Nederlands" = "Dutch", "Zuid-Nederlands" = "Flemish", "Engels" = "English", "Frans" = "French", "Duits" = "German", "Italiaans" = "Italian")
@@ -557,10 +559,10 @@ sim_results <- bind_rows(
   mutate(nationality = factor(ifelse(nationality == "English", "British", nationality), levels = bm_fix_nats))
 
 annotations <- data_frame(
-  nationality = c("Dutch", "British", "Flemish", "German", "Italian", "French"),
-  event_name = c("End of\nDutch revolt", "Reign of\nCharles I", "Spanish invasion\nof Antwerp", "Impact from the\nThirty Years' War?", "Impact from\nplague of 1656?", "Reign of\nLouis  XIV"),
-  start = c(1648, 1625, 1578, 1618, 1656, 1643),
-  end = c(1680, 1649, 1611, 1750, 1750, 1715)
+  nationality = c("Dutch", "British", "Flemish", "Italian", "French"),
+  event_name = c("End of\nDutch revolt", "Reign of\nCharles I", "Spanish invasion\nof Antwerp", "Impact from\nplague of 1656?", "Reign of\nLouis  XIV"),
+  start = c(1648, 1625, 1578, 1656, 1643),
+  end = c(1680, 1649, 1611, 1750, 1715)
 ) %>%
   mutate(nationality = factor(nationality, levels = bm_fix_nats))
 
@@ -570,13 +572,13 @@ annotations <- bind_rows(
   .id = "source"
 )
 
-ggplot(sim_results, aes(x = year)) +
+ggplot(filter(sim_results, source == "BM"), aes(x = year)) +
   geom_rect(data = annotations, aes(x = NULL, xmin = start, xmax = end, ymin = -Inf, ymax = Inf), alpha = 0.3) +
   geom_hline(yintercept = 0, color = "black", linetype = 3) +
   geom_ribbon(aes(ymin = e05, ymax = e95), alpha = 0.7, fill = "#E41A1C") +
-  geom_line(data = emp_results, aes(y = eii)) +
+  geom_line(data = filter(emp_results, source == "BM"), aes(y = eii)) +
   geom_label_repel(data = filter(annotations, source == "BM"), aes(x = (start + end)/2, label = event_name), y = -1, size = 2) +
-  facet_grid(nationality ~ source) +
+  facet_wrap(~ nationality, ncol = 2) +
   ylim(-1, 1) +
   xlim(1550, 1750) +
   theme_bw() +
@@ -602,49 +604,40 @@ The privations of the Thirty Years' War, which persisted in the German region lo
 As for Italian printmakers, their unexpectedly low number of external connections may have been due, in part, to the plague of 1656 and the economic collapse that followed in its wake.
 The Italian peninsula would still be recovering from this disaster a century later.[@alfani2013]
 
-# Case Studies of Traveling Printmakers
+# Exceptional Printmakers
 
 This long-term view of print production is a challenging one for traditional, artist-based perspectives on the history of artistic printmaking.
 At the scale of hundreds or thousands of artists working over two centuries, the broad contours of international print production appear to be determined more by demographic changes, rather than the impacts of specific artists, or turning points in political or military history.
 And yet, the individual experience of international collaboration and exchange varied widely in this period.
-Several case studies of artists hailing from both the southern and northern Netherlands will illustrate just how diverse these interactions could be.
 
-```{r rkm-flem-ind-eii, fig.fullwidth = FALSE, fig.cap="The individual EI scores of highly-central Flemish printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
-top_eiis <- function(dat, yr, nat, n = 10) {
-  dat %>%
-    filter(!is.na(eii), nationality == nat, year == yr) %>%
-    filter(min_rank(desc(total_degree_norm)) <= n) %>%
-    slice(1:n)
+(ref:ind-eii) Contrasting the individual EI index trends of several artists against their overall community EI trends.
+
+```{r ind-eii, fig.fullwidth = TRUE, fig.cap="(ref:ind-eii)"}
+ind_line <- function(names) {
+  walk(names, function(x) if (!(x %in% rkm_APr_alive$ind_trends$name)) stop(x, " is not a valid name."))
+  rkm_APr_alive$ind_trends %>% 
+    filter(name %in% c(names)) %>% 
+    mutate(nationality = recode(nationality, "Zuid-Nederlands" = "Flemish", "Noord-Nederlands" = "Dutch"))
 }
 
-top_eiis_plot <- function(top) {
-  top %>%
-    arrange(eii) %>%
-    mutate(realname = factor(name, levels = reorder(name, eii))) %>%
-    ggplot(aes(x = realname, y = eii)) +
-    geom_bar(stat = "identity") +
-    ylim(-1, 1) +
-    coord_flip() +
-    facet_wrap(~year) +
-    labs(x = NULL, y = NULL) +
-    theme_bw(base_size = 10) +
-    geom_hline(yintercept = 0, color = "black")
-}
+target_names <- c("Aegidius Sadeler", "Cornelis Bloemaert (II)", "Abraham Bloteling", "Pieter de Jode (II)")
 
-years <- c(1560, 1585, 1615, 1645, 1675, 1715)
-rkm_list <- top_list <- lapply(years, function(x) top_eiis(rkm_APrPu_alive$ind_trends, yr = x, nat = "Zuid-Nederlands", n = 8))
-plot_list <- lapply(top_list, function(x) ggplotGrob(top_eiis_plot(x)))
-
-grid::grid.newpage()
-grid::grid.draw(cbind(
-  rbind(plot_list[[1]], plot_list[[2]], plot_list[[3]], size = "max"),
-  rbind(plot_list[[4]], plot_list[[5]], plot_list[[6]], size = "max"))
-)
+rkm_APr_alive$nat_trends %>% 
+  mutate(nationality = recode(nationality, "Zuid-Nederlands" = "Flemish", "Noord-Nederlands" = "Dutch")) %>% 
+  filter(nationality %in% c("Dutch", "Flemish"), between(year, 1550, 1750)) %>% 
+  ggplot(aes(x = year, y = eii)) +
+  geom_line(alpha = 0.5, size = 1) +
+  scale_color_brewer(palette = "Dark2", guide = FALSE) +
+  geom_line(data = ind_line(target_names), aes(color = name)) +
+  geom_label_repel(data = filter(group_by(ind_line(target_names), name), row_number(desc(eii)) == 1), aes(label = name, color = name), box.padding = unit(2, "lines")) +
+  ylim(-1, 1) +
+  facet_wrap(~nationality, ncol = 3, labeller = labeller(nationality = c("Dutch" = "Overall Dutch EII", "Flemish" = "Overall Flemish EII"))) +
+  theme_bw()
 ```
 
 Family dynasties played a key role in the Flemish print production network.[@lincoln2016-2, 149-152]
 This broader European perspective reveals important distinctions between the comparative international reach of these families.
-While prominent engravers in the Galle, Wierix, and De Jode families tended to make most of their connections to Flemish collaborators, members of the Sadeler family consistently rank among the more internationally-focused Flemish print producers, with Jan (Johann) I Sadeler and Aegidius II Sadeler maintaining a roughly even split between collaboration with Flemish and artists and publishers versus foreign ones. (Figure \@ref(fig:rkm-flem-ind-eii))
+While prominent engravers in the Galle, Wierix, and De Jode families tended to make most of their connections to Flemish collaborators, members of the Sadeler family consistently rank among the more internationally-focused Flemish print producers, with Jan (Johann) I Sadeler and Aegidius II Sadeler maintaining a roughly even split between collaboration with Flemish and artists and publishers versus foreign ones. (Figure \@ref(fig:ind-eii))
 
 The Sadelers leveraged their early displacement from Antwerp in 1586 into a highly successful dynasty connected not only to their original home in Flanders, but also to the Hapsburg court in Prague and to Italian circles in both Venice and Rome.
 In 1586, Jan I and his brother and fellow engraver, Raphael I, along with their nephew Aegidius I, fled political turmoil in Antwerp for Mainz, followed by Frankfurt and then to the court of Duke Wilhelm V in Munich.[See @limouze1994 for an account of Jan's early work in Mainz and Frankfurt; on Munich, see @limouze2009.]
@@ -655,45 +648,8 @@ Justus inherited most of his father's plates, and would continue to publish impr
 These bonds of family, combined with their shared talents with the burin, allowed the Sadelers to patch together a remarkably successful printmaking dynasty in spite of their itinerant lives.
 
 In the north, traveling printmakers were also an exception to the overall preference by Dutch print producers for domestic collaborators in the seventeenth century.
-Figure \@ref(fig:rkm-dutch-ind-eii) shows a sample of the most central participants in the Dutch printmaking network across several different periods.[^infl]
 While the _overall_ Dutch EI index was negative in the mid-seventeenth century, it is easy to find examples of Dutch artists who did a great deal of international work, just as it is common to find ones who worked almost exclusively with other Dutch artists and publishers.
-
-```{r rkm-dutch-ind-eii, fig.fullwidth = FALSE, fig.cap="The individual EI indices of highly-central Dutch printmakers and publishers in 1560, 1585, 1615, 1645, 1675, 1715"}
-top_eiis <- function(dat, yr, nat, n = 10) {
-  dat %>%
-    filter(!is.na(eii), nationality == nat, year == yr) %>%
-    filter(min_rank(desc(total_degree_norm)) <= n) %>%
-    slice(1:n)
-}
-
-top_eiis_plot <- function(top) {
-  top %>%
-    arrange(eii) %>%
-    mutate(realname = factor(name, levels = reorder(name, eii))) %>%
-    ggplot(aes(x = realname, y = eii)) +
-    geom_bar(stat = "identity") +
-    ylim(-1, 1) +
-    coord_flip() +
-    facet_wrap(~year) +
-    labs(x = NULL, y = NULL) +
-    theme_bw(base_size = 10) +
-    geom_hline(yintercept = 0, color = "black")
-}
-
-years <- c(1560, 1585, 1615, 1645, 1675, 1715)
-top_list <- lapply(years, function(x) top_eiis(rkm_APrPu_alive$ind_trends, yr = x, nat = "Noord-Nederlands", n = 8))
-plot_list <- lapply(top_list, function(x) ggplotGrob(top_eiis_plot(x)))
-
-grid::grid.newpage()
-grid::grid.draw(cbind(
-  rbind(plot_list[[1]], plot_list[[2]], plot_list[[3]], size = "max"),
-  rbind(plot_list[[4]], plot_list[[5]], plot_list[[6]], size = "max"))
-)
-```
-
-[^infl]: Influence is ranked by degree centrality, the metric used in chapter 2, figures \@ref(fig:bm-dutch-ind-cent) and \@ref(fig:bm-flem-ind-cent.)
-
-One exceptin was Cornelis Bloemaert the Younger, who was born in Utrecht around 1603.[@roethlisberger1993, 513--526.]
+One such exception was Cornelis Bloemaert the Younger, who was born in Utrecht around 1603.[@roethlisberger1993, 513--526.]
 He initially studied painting with his father, Abraham Bloemaert, but would later train as an engraver with Crispijn de Passe.[@baldinucci1767, 131--138]
 He left his hometown for Paris in 1630, where he would work for three years engraving designs after various French masters.
 By 1634, he had arrived in Rome, where he joined the "Bentvueghels", an expatriate fraternity of northern European artists working in Rome.
@@ -717,34 +673,10 @@ Surviving documents of Bloemaert's interaction with the cardinal reveal how deta
 A surviving letter from the painter Pietro da Cortona to Cardinal Sacchetti's steward enumerates separate line items owed to Bloemaert for the figural illustration of a particular engraving, listing a charge for the decorative border, another for the inscription, one for the coat of arms, as well as a line for the copper plates themselves.[@kraemer1989, 414]
 Bloemaert's prints were valued enough to be displayed not only in albums, but also on walls: a series of illustrations Bloemaert engraved for Sacchetti's thesis would later be set in an elaborate frame in the Palazzo Sacchetti.[@kraemer1989, 415]
 
-## Abraham Blooteling
-
-Another of the handful of influential Dutch engravers who made most of his connections to foreign collaborators in the late seventeenth century was Abraham Blooteling, who would come to be known for his skill in the novel mezzotint technique.[For Blooteling's oeuvre, see @wessely1867.]
-Blooteling was born in Amsterdam, where he trained with Cornelis van Daelen I.
-Like Bloemaert, Blooteling's first international destination was Paris; he arrived there in 1660.
-He apprenticed with Pierre van Schuppen, member of a small group of Flemish engravers working in the city.
-Blooteling met another mezzotint innovator in Paris named Wallerant Vaillant.
-Blooteling and Vaillant would both return to Amsterdam in 1665, where they continued to work together closely, sharing _modelli_ and print designs that Blooteling had inherited from Van Daelen.[@curd2010, 129--133]
-
-Blooteling made his biggest impact, however, in London.
-Dutch printmaking talent and Dutch prints had been in high demand in England since the sixteenth century, when Crispijn de Passe sold impressions to the London market while working in Cologne.[@sluijter2003, 15.]
-In the wake of the Restoration, Dutch painters and printmakers alike flocked to London as they followed Charles II (and the patronage of his court) when he returned from his exile in The Hague.
-Blooteling moved several years later, leaving Amsterdam in 1673 at the invitation of King Charles' cousin, Prince Rupert of the Rhine.
-The invitation may have been all the more attractive to Blooteling following the 1672 French invasion of the Netherlands, which had caused an economic contraction that likely depressed the Dutch art market.
-Blooteling was strategic in his planning, however.
-Mary Bryan Curd has convincingly demonstrated how Blooteling mobilized his network of students and patrons in order to establish himself in London.
-He ensured that his apprentice, Jan van Munnickhuijsen, would be able to accompany him to London and provide valuable labor and financial support.
-Like Bloemaert in Rome, Blooteling also leveraged his print subjects and patrons to attract more business once in the new city.
-One of his first publications were engraved portraits of Rupert and Charles: gifts to those who had invited him, but also a signal to potential English clients of his ability to engrave refined likenesses.
-Blooteling would continue to differentiate himself by introducing print portrait series (a staple of Dutch artistic printmaking) to London audiences.[@curd2010, 137]
-Like Bloemaert, Blooteling derived long-term benefits from local networks he worked to establish while abroad.
-Even after returning to Amsterdam in 1678, Blooteling continued to market his prints in England via his London contacts.[@curd2010, 153]
-However, he clearly understood the distinct tastes of the Amsterdam market as well, producing more etchings and engravings after Dutch subjects in this final phase of his career.
-
-For all the international connections they made, it is interesting to note that both Bloemaert and Blooteling relied heavily on fellow expatriates when they made their moves to Paris, Rome, and London.
+For all the international connections he made, however, it is interesting to note that Bloemaert relied heavily on fellow expatriates when he made his move to Paris and Rome - albeit in a social capacity, rather than a direct professional oen.
 This nuance is an important to bear in mind when looking at quantitative results that suggest both engravers did most of their work with foreigners.
-Both of these cases also demonstrate the importance of network connections that do not fall within the set of direct ties of artistic source, printmaker, and publisher captured by the datasets used for this study.
-The funding and social connections of family members, patrons, and even portrait subjects were integral to both Bloemaert's and Blooteling's success.
+His case demonstrates the importance of network connections that do not fall within the set of direct ties of artistic source, printmaker, and publisher captured by the datasets used for this study.
+The funding and social connections of family members, patrons, and even portrait subjects were integral to Bloemaert's success.[Bloemaert's expatriate social network resonates with that of the Dutch etcher and mezzotinter Abraham Blooteling, who established a similar circle while working in London; @curd2010, 127-161.]
 
 # Conclusion: Continuity and Change
 
