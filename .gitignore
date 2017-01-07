@@ -1,9 +1,4 @@
-*.pdf
-*.docx
-*.jpeg
-*.jpg
-*.png
+_book/
+_bookdown_files/
 .Rproj.user
-*.Rproj
 .Rhistory
-_book*
