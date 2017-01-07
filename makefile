@@ -1,12 +1,16 @@
-OUTPUT = _book/_main.pdf
+PDF = _book/_main.pdf
+WORD = _book/_main.docx
 INPUT = mlincoln_print_network.Rmd
 
-all: $(OUTPUT)
+all: $(PDF) $(WORD)
 
-$(OUTPUT): $(INPUT)
-	Rscript --vanilla -e "bookdown::render_book('$(INPUT)')"
+$(PDF): $(INPUT)
+	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
+
+$(WORD): $(INPUT)
+	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::word_document2')"
 
 .PHONY: clean
 clean:
 	rm -rf _bookdown_files
-	rm -f _book/_main.pdf
+	rm -f $(PDF) $(WORD)

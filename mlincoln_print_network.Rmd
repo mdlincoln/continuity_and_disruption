@@ -4,6 +4,12 @@ author: "Matthew Lincoln"
 documentclass: article
 bibliography: ../zotero.bib
 csl: chicago-fullnote-bibliography.csl
+bookdown::word_document2: default
+bookdown::tufte_handout2:
+  toc: false
+  keep_tex: true
+  number_sections: false
+
 ---
 
 ```{r libraries, include = FALSE}
@@ -19,7 +25,15 @@ library(igraph)
 library(knitr)
 library(bookdown)
 library(purrr)
-opts_chunk$set(echo = FALSE, cache = TRUE, sanitize = TRUE, warning = FALSE, dpi = 300, fig.align = "center", fig.width = 9, fig.height = 7)
+opts_chunk$set(
+  echo = FALSE, 
+  cache = TRUE, 
+  sanitize = TRUE, 
+  warning = FALSE, 
+  dpi = 300, 
+  fig.align = "center", 
+  fig.width = 9, 
+  fig.height = 7)
 ```
 
 # Introduction
@@ -42,7 +56,7 @@ At the renowned Frankfurt book fair, prominent book publishers even included spe
 The _consumption_ of prints was clearly internationalized by the early 1500s.
 To what extent, however, was their _production_ internationalized?
 
-Starting from the focal point of the northern Netherlands, an early modern printmaking center with both longstanding international influence, as well as a strong domestic print production capacity, this paper will offer a novel perspective on the interconnection of printmaking communities within the larger European world of artistic prints.
+Working from the focal point of the northern Netherlands, an early modern printmaking center with both longstanding international influence, as well as a strong domestic print production capacity, this paper will offer a novel perspective on the interconnection of printmaking communities within the larger European world of artistic prints.
 Using macro-scale network analysis to characterize the potential historical professional networks that we can infer from two catalogs of surviving print impressions, several questions will be addressed:
 
 1. How did shifts in the northern and southern Netherlands compare to those in other prominent printmaking centers in Italy, Germany, or France? 
