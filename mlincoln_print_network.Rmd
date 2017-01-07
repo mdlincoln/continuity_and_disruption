@@ -2,12 +2,6 @@
 title: "Continuity and Disruption in European Networks of Print Production, 1550-1750"
 author: "Matthew Lincoln"
 documentclass: article
-output: 
-  bookdown::tufte_handout2:
-    toc: false
-    keep_tex: true
-    number_sections: false
-  bookdown::word_document2: default
 bibliography: ../zotero.bib
 csl: chicago-fullnote-bibliography.csl
 ---
@@ -40,7 +34,7 @@ opts_chunk$set(echo = FALSE, cache = TRUE, sanitize = TRUE, warning = FALSE, dpi
 
 >Regarding [prints'] effect: what fame is to the ear, theirs is to the eye. Painting has but one result, but engraving hundreds. Fame can tell the many wonders of painting in its absence; but engraving makes itself present everywhere; it flies the world over, as it sounds the echoing trumpet of renown.[^lairesse]
 
-[^lairesse]: "Wat haare uitwerking aangaat, zy is voor het gezicht het geen de Faam voor het gehoor is. De Schilderkonst heeft maar een Origineel, maar de Graveerkunde honderden. De Faam kan van de Schilderkonst veele wonderen vertellen in haar afweezen: maar de Graveerkunde maakt zich overal tegenwoordig. Zy vliegt zo wel de geheele waereld over, als de klank der galmende trompet des Geruchts."; [@lairesse1712, 2:372--373]
+[^lairesse]: "Wat haare uitwerking aangaat, zy is voor het gezicht het geen de Faam voor het gehoor is. De Schilderkonst heeft maar een Origineel, maar de Graveerkunde honderden. De Faam kan van de Schilderkonst veele wonderen vertellen in haar afweezen: maar de Graveerkunde maakt zich overal tegenwoordig. Zy vliegt zo wel de geheele waereld over, als de klank der galmende trompet des Geruchts."; @lairesse1712, 2:372--373
 
 Late seventeenth- and early eighteenth-century Dutch art commentators Willem Goeree, Samuel van Hoogstraten, and Gérard de Lairesse uniformly agreed on the power of prints to transmit an artist's images far and wide.
 Thanks to the relative ease of moving finished impressions, prints had been a mainstay of the international art market in Europe for more than a century and a half.
