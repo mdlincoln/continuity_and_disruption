@@ -9,7 +9,8 @@ bookdown::tufte_handout2:
   toc: false
   keep_tex: true
   number_sections: false
-
+bookdown::gitbook:
+  split_by: none
 ---
 
 ```{r libraries, include = FALSE}
@@ -147,7 +148,7 @@ Moreover, each museum has released meticulous curatorial data aobut these collec
 
 (ref:nationality-counts) Counts of artists (and prints) by nationality in the BM and RKM datasets.
 
-```{r nationality-counts, fig.margin = TRUE}
+```{r nationality-counts}
 bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
 
 rkm_nats <- c("Noord-Nederlands", "Zuid-Nederlands", "Engels", "Frans", "Duits", "Italiaans")
@@ -363,7 +364,7 @@ Figure \@ref(fig:all-nats-eii) plots the changing EI index for Dutch, Flemish, F
 Both museum databases return roughly equivalent results for both the Dutch and Flemish printmaking communities.
 Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production.
 The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
-Given the vast superiority of the BM's holdings in English prints (Table \ref@(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
+Given the vast superiority of the BM's holdings in English prints (Table \@ref(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
 
 Dutch artists primarily connected to foreign collaborators up until the 1570s, when they shifted quickly to a roughly even split between domestic versus foreign connections.
 After this sudden shift, Dutch artists and printmakers continued to favor mostly domestic collaborators, hovering around an EI index of -0.5, i.e. making at least 75% of their connections to fellow Dutchmen.
@@ -691,7 +692,6 @@ The funding and social connections of family members, patrons, and even portrait
 What appears as dramatic, discontinuous change in one register is revealed to be gradual, continuous change in other.
 
 However, like many complex systems, most of the larger structural changes these print production networks underwent, though unpredictable and sudden when viewed in the short term, can be understood as emergent consequences of slow-moving demographic change and the gradual transfer of technical and artistic knowledge between different European communities.
-
 
 # Appendix A
 
