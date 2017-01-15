@@ -57,14 +57,12 @@ At the renowned Frankfurt book fair, prominent book publishers even included spe
 The _consumption_ of prints was clearly internationalized by the early 1500s.
 To what extent, however, was their _production_ internationalized?
 
-Working from the focal point of the northern Netherlands, an early modern printmaking center with both longstanding international influence, as well as a strong domestic print production capacity, this paper will offer a novel perspective on the interconnection of printmaking communities within the larger European world of artistic prints.
-Using macro-scale network analysis to characterize the potential historical professional networks that we can infer from two catalogs of surviving print impressions, several questions will be addressed:
+While starting from the focal point of the northern Netherlands, this paper will offer a novel perspective on the interconnection of print production communities within the larger early modern European world of printmaking.
+Computational network analysis offers provides an alternative framework for understanding the multiple scales, and velocities, of organizational changes in the way that print designers, platecutters, and publishers interacted both within and across regional communities.
+Comparing the timing and intensity of these changes to traditional narratives about the rise of, say, the concentrated domestic Dutch printmaking community, reveals provocative disjunctures.
+More crucially, we can better guague whether these changes in this production balance determined by specific historical events, or, rather, subject to larger structural incentives coupled to _longue durée_ population shifts across Europe over this period.
+Thus, rather than reifying ahistorical national labels assigned by modern art historians, this data-driven approach productively troubles those categorizations by comparing those post-hoc national classifications to the communities of production described by the objects themselves.
 
-1. How did shifts in the northern and southern Netherlands compare to those in other prominent printmaking centers in Italy, Germany, or France? 
-2. How varied were individuals' strategies when it came to domestic and international production? 
-3. More crucially, were these changes in this production balance determined by specific historical events, or, rather, subject to larger structural incentives coupled to _longue durée_ population shifts across Europe over this period?
-
-While there are, indeed, some dramatic, and dramatically fast, shifts to and from international vs. domestic print production concentration,shared patterns of domestic and international production shifts across other countries in this period suggest that most of these seemingly-dramatic changes can be explained by gradual demographic trends and the relative maturity of different regional print production communities.
 That said, key exceptions indicate the occasional power of disruptive events, and even single individuals, to affect a much larger world of printmaking.
 
 # Background: Dutch Internationalism / Dutch Regionalism
