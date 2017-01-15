@@ -65,30 +65,18 @@ Thus, rather than reifying ahistorical national labels assigned by modern art hi
 
 That said, key exceptions indicate the occasional power of disruptive events, and even single individuals, to affect a much larger world of printmaking.
 
-# Background: Dutch Internationalism / Dutch Regionalism
+# Dutch Internationalism / Dutch Regionalism
 
-The early history of Dutch printmaking is tightly interwoven with international influences.
+The early history of Netherlandish printmaking is tightly interwoven with international influences.
 Lucas van Leyden attracted international acclaim for his masterful handling of the burin.
-Among his admirers was no less than the Nuremberg master Albrecht Dürer, who made a point to visit the Leiden artist during a journey to the Netherlands in 1520, where he would exchange 8 florins' worth of his own prints for a complete set of Lucas' own oeuvre when the two met in Leiden.[@marlier1971, 29]
-The influence of Lucas' prints extended south of the Alps, too.
-In Italy, Marcantonio Raimondi frequently adopted Lucas' silvery background designs for use in his own prints, such as the _Climbers_ of 1510 that melds a landscape quoted from Lucas with figures derived from Michelangelo's renowned drawing of the _Battle of Cascina_.^[On Marcantonio's quotation of Lucas, see @barnes2010, 16.] (Figure \@ref(fig:lucas-raimondi))
+Among his admirers was no less than the Nuremberg master Albrecht Dürer, as well as the Florentine Marcantonio Raimondi.[@marlier1971, 29; on Marcantonio's quotation of Lucas, see @barnes2010, 16.]
 
 Beyond these individual artistic connections, collaborative print production began to take on international dimensions with the rise of large print production houses and the professionalization of engraving in the mid-sixteenth century.
 Some Dutch printmakers had built thriving careers creating engravings for Italian painters in Venice and Rome, enjoying the fruits of northern Europeans' reputation for printmaking skill that had been promulgated by Giorgio Vasari.[@landau1983; @gregory2012, 2--4.]
 Cornelis Cort, in Rome from 1565--1578, found great success as a printmaker for major Italian painters such as Titian, Giulio Clovio, Girolamo Muziano, and Federico Zuccaro.[@sellink1994; @sman2005, 251--252]
-In addition to German and Italian centers, the mid-sixteenth-century publishing house of Hieronymus Cock, _Aux Quatre Vents_, proved especially influential to multiple generations of Dutch printmakers.[For example, during his early career in Haarlem between 1557--1570, Philips Galle engraved several prints to be published in Antwerp by Cock; @sellink1997]
-
-Galle's experience would be mirrored in the following generation of Dutch printmakers.
-Early in his career, Hendrick Goltzius produced many reproductive prints for Galle after a wide range of artists.
-Goltzius lived in Haarlem while Galle remained based in Antwerp, working via correspondence much as Galle had done for Cock in his early years.
-Goltzius would continue this model of remote collaboration even after setting up his own independent studio in 1582.
-The collaboration between Hendrick Goltzius and Bartholomeus Spranger, court painter to Rudolf II, illustrates well how the design, cutting, and marketing of a print could easily take on an international scope.[@leeflang2003, 82--83, cat. 28] (Figure \@ref(fig:goltzius-wedding))
-
-(ref:lucas-raimondi) (left) Lucas van Leyden designed and engraved, *Mohammed and the Monk Sergius*, 1508. Engraving. British Museum, London. (Image © Trustees of the British Museum.) (right) Marcantonio Raimondi after Michelangelo Buonarotti, *The Climbers*, 1510--1520. Engraving, British Museum, London. (Image © Trustees of the British Museum.)
-
-```{r lucas-raimondi, out.width = "3.5in", fig.cap="(ref:lucas-raimondi)"}
-include_graphics("assets/images/lucas_raimondi.jpg")
-```
+In addition to German and Italian centers, the mid-sixteenth-century publishing house of Hieronymus Cock, _Aux Quatre Vents_, frequently contracted with Dutch engraveers such as Philips Galle to produce plates to be published in Antwerp.[For example, during his early career in Haarlem between 1557--1570, Philips Galle engraved several prints to be published in Antwerp by Cock; @sellink1997]
+The Haarlem master Hendrick Goltzius would continue this model of remote collaboration even after setting up his own independent studio in 1582.
+The well-known collaboration between Hendrick Goltzius and Bartholomeus Spranger, court painter to Rudolf II, illustrates how the design, cutting, and marketing of a print could easily take on an international scope.[@leeflang2003, 82--83, cat. 28] (Figure \@ref(fig:goltzius-wedding))
 
 (ref:goltzius-wedding) Hendrick Goltzius, after Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1587. Engraving,  43.5 cm. x 86.1 cm. Rijksmuseum, Amsterdam.
 
@@ -102,33 +90,32 @@ include_graphics("assets/images/goltzius_wedding.jpg")
 include_graphics("assets/images/evdv.jpg")
 ```
 
+But portions of this printmaking community focused on strong domestic connection as well.
 In the first decades of the seventeenth century, Haarlem printmakers Claesz Jansz Visscher, Esaias van de Velde I, Willem Buytewech, Hercules Segers, and Jan van de Velde II, began to produce their own versions of the local, rustic landscape view first popularized by Hieronymus Cock in Antwerp.[On the relationship of the anonymously-designed _Small Landscapes_ to the printed landscape tradition in Haarlem, see @onuf2011; @onuf2014]
-These images, which highlighted specific local landmarks as well as more generalized "Dutch" views, featured distinctive elements such as rolling dunes, canals, and signs of local industry such as linen bleaching.
-This local turn in printmaking has been connected with the coalescing of a Dutch national identity during the course of the revolt against Spain between 1568--1648.[@freedberg1980, 11--15; @levesque1994, ch. 6.]
+These images, which highlighted specific local landmarks as well as more generalized "Dutch" views, featured distinctive elements such as rolling dunes, canals, and signs of local industry such as linen bleaching.[@freedberg1980, 11--15; @levesque1994, ch. 6.]
 All of these printmakers joined the Haarlem guild in 1612, forming a critical mass of pioneering talent who each took up the printed landscape as their subject in one form or another.
+In the following decades, an increasing number of Dutch engraver-publishers such as Hendrick Hondius and Crispijn de Passe cultivated a stock primarily produced by fellow Dutch artists.[@orenstein1996, 47.]
 
-
-This international flow of images and influence did not occur in a vacuum.
+To what extent, however, can this handful individuals be taken to stand for the overall balance of international vs. domestically-focused Dutch print production partnerships at different points in time?
+It is all too easy enough to generate oppsing plausible historical scenarios that would explain either increasing international connections by Dutch designers, platecutters, and publishers - or, on the other hand, their increased domesticization.[I first articulated this problem in @lincoln2015-confab]
 
 In the late sixteenth century, the northern Netherlands entered a golden age of economic growth thanks to their unmatched control of international sea trade around the world.
-As their prosperity increased, many Dutch authors, musicians, and artists sought to add internationalizing elements to their works, as a way of asserting Dutch cultural legitimacy in the broader world of early modern Europe.[On the interest in legitimizing Dutch culture on the European stage, see @kettering1983]
-Several waves of Dutch artists also traveled south to study and paint in Italy, establishing an expatriate community in Rome.[On seventeenth-century Dutch artists' interest in Italy, see @schatborn2001; @harwood2002]
+Several waves of Dutch artists traveled south to study and paint in Italy, establishing an expatriate community in Rome.[On seventeenth-century Dutch artists' interest in Italy, see @schatborn2001; @harwood2002. Moreover, as their prosperity increased, many Dutch authors, musicians, and artists sought to add internationalizing elements to their works, as a way of asserting Dutch cultural legitimacy in the broader world of early modern Europe; see @kettering1983]
 Prominent Dutch and Flemish portraitists found many patrons in the English court, and printmakers from the Low Countries were in particular demand in London.
 Likewise, foreign publishers and print sellers may have found the thriving Northern Netherlands a particularly attractive market.[@hoftijzer2001, 251--252.]
 
-The political environment may not have been as conducive to the flow of prints across international borders, however.
+One might postulate, though, that _domestic_ production would instead come to dominate Dutch printmaking.
+The political environment may not have been as conducive to the flow of prints across international borders
 The start of the Dutch revolt against Spain in 1568 may have made it more difficult for artists in the Low Countries to conduct international business, from the early transmission of contracts and drawn designs to the large shipments of finished impressions required for a successful printmaking business.
-At the same time, the flourishing economy supported a blossoming print industry in Amsterdam in particular.[@hoftijzer2001, 249.]
-With avenues to international collaboration cut off, and an increasing amount of domestic supply _and_ demand in centers like Haarlem and Amsterdam, Dutch printmakers and publishers may have been encouraged to make more domestic connections than ever before.
-Now, rather than having to turn to international partners to produce prints, Dutch artists, printmakers, and publishers could increasingly work with their own countrymen.
-A flourishing Dutch art market, both in Amsterdam as well as in smaller towns like Utrecht and Delft, appears to have supported a more decentralized print production network than had existed in the late sixteenth century.[@lincoln2016-2]
-It is possible that this same decentralization may have spurred more domestic collaboration as well.
+The flourishing economy supported a blossoming print industry in Amsterdam, in particular.[@hoftijzer2001, 249.]
+With avenues to international collaboration curtailed, and an increasing amount of domestic supply _and_ demand in centers like Haarlem and Amsterdam, Dutch printmakers and publishers may have been encouraged to make more domestic connections than ever before.
+Now, rather than having to turn to international partners to produce prints, Dutch artists, printmakers, and publishers could increasingly work with their own countrymen.[A flourishing Dutch art market, both in Amsterdam as well as in smaller towns like Utrecht and Delft, appears to have supported a more decentralized print production network than had existed in the late sixteenth century. It is possible that this same decentralization may have spurred more domestic collaboration as well; @lincoln2016-2]
 
-To help lcarify how these competing incentives may have played out over the course of the long seventeenth century, we can turn to network analysis to provide a novel perspective.
+In the absence of a single intuitive and convincing historical answer, we can turn to network analysis to provide additional scales of evidence.
 
-# Methodology: Measuring International Interaction
+# Oprationalizing International Interaction
 
-Computational network analysis is a particular discipline for describing networks in a formal way.
+Computational network analysis is a discipline that attempts to formalize, or operationalize, the descripton of networks.[I use the term "operationalizing" in the sense discussed by @moretti2013-1.]
 While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studioes, or of patronage and collecting - computational network analysis demands that preicsly what makes up the members of a network, and the rules used to derive connections between those members, be defined very specifically.
 The benefit to adopting these strictures, however, is that it permits us to see the complex topological characterists of a network - how centralized or decentralized it is, the degree of interconnection between its constitutent groups, and which members act as key brokers of connections between disparate communities - that are invisible from the ground-level perspective seen when considering just one relationship at a time.
 
