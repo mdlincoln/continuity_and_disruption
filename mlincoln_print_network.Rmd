@@ -164,7 +164,7 @@ Rather than producing a single network encompassing every constitutent and conne
 (ref:timeslice) Examples. (Previously published in Lincoln 2016.)
 
 ```{r timeslice, fig.cap="(ref:timeslice)", fig.fullwidth = TRUE, out.width = "6in"}
-include_graphics("assets/images/timeslice_examples.pdf")
+include_graphics("assets/images/timeslice_examples.png")
 ```
 
 Such a picture is inevitably flattening; it necessitates discarding a great deal of information.
