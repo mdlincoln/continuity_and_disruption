@@ -4,4 +4,4 @@ bookdown::tufte_handout2:
   keep_tex: true
   number_sections: false
 bookdown::gitbook:
-  split_by: none
+  number_sections: FALSE
