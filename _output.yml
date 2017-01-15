@@ -1,0 +1,7 @@
+bookdown::word_document2: default
+bookdown::tufte_handout2:
+  toc: false
+  keep_tex: true
+  number_sections: false
+bookdown::gitbook:
+  split_by: none

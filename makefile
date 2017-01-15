@@ -2,18 +2,19 @@ PDF = _book/_main.pdf
 WORD = _book/_main.docx
 HTML = _book/introduction.html
 INPUT = mlincoln_print_network.Rmd
+OUT = _output.yml
 
 all: $(HTML) $(WORD)
 
 pdf: $(PDF)
 
-$(PDF): $(INPUT)
+$(PDF): $(INPUT) $(OUT)
 	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
 
-$(WORD): $(INPUT)
+$(WORD): $(INPUT) $(OUT)
 	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::word_document2')"
 
-$(HTML): $(INPUT)
+$(HTML): $(INPUT) $(OUT)
 	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::gitbook')"
 
 .PHONY: clean
