@@ -297,13 +297,14 @@ ggplot(intl_ties, aes(x = year, y = eii, color = dataset)) +
 
 Figure \@ref(fig:all-nats-eii) plots the changing EI index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750, comparing the trends observed from both the BM and RKM datasets.
 Both museum databases return roughly equivalent results for both the Dutch and Flemish printmaking communities.
-Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production.
-The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
+Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production.[^disagree]
+
+[^disagree]: The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
 Given the vast superiority of the BM's holdings in English prints (Table \@ref(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
 
 Dutch artists primarily connected to foreign collaborators up until the 1570s, when they shifted quickly to a roughly even split between domestic versus foreign connections.
 After this sudden shift, Dutch artists and printmakers continued to favor mostly domestic collaborators, hovering around an EI index of -0.5, i.e. making at least 75% of their connections to fellow Dutchmen.
-The Flemish printmaking community presents a rough inverse of this pattern, making most of its connections internally in the sixteenth and early seventeenth centuries, before quickly shifting around 1675 to majority-external connections.
+The group of artists classed as Flemish presents a rough inverse of this pattern, making most of their connections internally in the sixteenth and early seventeenth centuries, before quickly shifting around 1675 to majority-external connections.
 
 These results support the hypothesis that Dutch printmaking experienced a domestic "turn" not only in subject and style, but also in the infrastructure of print production itself.
 Dutch artists rapidly shifted in the late sixteenth century to having their designs reproduced by fellow Dutch printmakers and publishers, rather than by foreign engravers.
@@ -313,86 +314,19 @@ Even more surprising is how swiftly this landscape of print production changed.
 Within just a few years, Dutch artists moved from making over three-quarters of their connections to foreign sources, to a roughly even split.
 We see a similarly precipitate turn in the Southern Netherlands in the mid-seventeenth century --- but towards more international production, rather than more domestic.
 
-It is possible that Flemish print producers began looking for work and collaborators outside their borders, much as many other luxury exporters did in response to the general stagnation of the Flemish economy in the mid-seventeenth century.[Flemish artists and book publishers dramatically increased the amount of paintings, books, and tapestries they exported via the Northern Netherlands in the wake of the Treaty of Münster; @rasterhoff2014, 136--140; also see @blonde2002, 25--27]
-However, it is all too easy overdetermine explanations for changes in these types of social networks based on particular events.
 Indeed, we can observe rapid shifts from majority-external to majority-internal printmaking collaboration in the French and English communities that are quite similar to the pattern seen in the northern Netherlands.
 Both the French and English communities also begin this period making most of their connections externally, but each underwent their own separate, inward shifts at 1620 and 1650, respectively.
 The German and Italian print production networks, on the other hand, began this period internally-connected, only to trend gradually towards more external connections.
-Neither the German nor the Italian printmaking communities made changes as drastic as their European counterparts.
 
-What was the source of these challenges?
+No one signle historical event appears to have catalyzed simultaneous shifts across any of these communities.
+However, before attempting to interpret these trends, it is crucial to distinguish between those shifts that we might expect to see in _any_ network of similar size and distribution of groups, versus those changes that are unexpected, and which might be attributable to some outside historical event.
 
-# Disruption / Continutiy: Modelling the Print Production Network
+# Disruption with Continutiy: Simulating Networks
 
-It seems little coincidence that the regional networks that were primarily inward-connecting or evenly connecting in the mid-sixteenth century (the southern Netherlands, Italy, and Germany) also had some of the longest-established printmaking traditions, dating back to the late fifteenth century.[@landau1994, ch 1.]
-Building up a viable regional production network took time and resources.
-Over time, these externally-dependent regions would begin to cultivate more native talent, knowledge, and physical resources, as experienced printmakers trained new students and transitioned from making prints to establishing their own publishing firms.
-As domestic capacity grew, so too would the incentive for artists and printmakers to partner with domestic collaborators.
-Already possessing well-developed printmaking infrastructure, those regions could host relatively self-sustaining networks of print producers.
-Aspiring printmakers from areas with smaller, less developed printmaking communities, on the other hand, would have had little choice but to reach out to foreign centers with more established printmaking infrastructure.
-
-Under this theory, we'd expect to see a shared pattern of "inward turns" at different points in time for  northern Netherlands, France, and England.
-Notably, the shifts were most abrupt in communities that were concentrated in particularly small geographic areas (the Northern and Southern Netherlands, England), with more gradual changes in the communities spread across a larger area (Italian, French, and German).
-
-(ref:europe-pop) Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. (\"Other\" regions include Scandinavia, Scotland and Ireland, and eastern Europe).
-
-```{r europe-pop, fig.cap = "(ref:europe-pop)"}
-region_map <- c(
-  "The Netherlands" = "Dutch",
-  "Belgium" = "Flemish",
-  "France" = "French",
-  "Germany" = "German",
-  "Switzerland" = "German",
-  "Northern Italy" = "Italian",
-  "Central Italy" = "Italian",
-  "Southern Italy" = "Italian",
-  "England and Wales" = "English",
-  "Scandinavia" = "Other",
-  "Scotland" = "Other",
-  "Ireland" = "Other",
-  "Spain" = "Iberian peninsula",
-  "Portugal" = "Iberian peninsula",
-  "Austria and Czechoslovakia" = "Other",
-  "Poland" = "Other"
-)
-
-pop_ratio <- europop %>%
-  mutate(nationality = plyr::revalue(region, region_map)) %>%
-  group_by(year, nationality) %>%
-  summarize(totalpop = sum(population, na.rm = TRUE)) %>%
-  group_by(year) %>%
-  mutate(ratio = totalpop/sum(totalpop)) %>%
-  ungroup()
-
-labs <- pop_ratio %>% filter(
-  (nationality == "Italian" & year == 1600) |
-    (nationality == "Other" & year == 1600) |
-    (nationality == "German" & year == 1550) |
-    (nationality == "French" & year == 1700) |
-    (nationality == "English" & year == 1750) |
-    (nationality == "Dutch" & year == 1650) |
-    (nationality == "Flemish" & year == 1750) |
-    (nationality == "Iberian peninsula" & year == 1600))
-
-ggplot(pop_ratio, aes(x = year, y = ratio)) +
-  geom_line(aes(color = nationality), size = 1) +
-  geom_label_repel(data = labs, aes(label = nationality)) +
-  scale_color_brewer(palette = "Set2", guide = FALSE) +
-  scale_y_continuous(labels = scales::percent) +
-  theme_bw() +
-  labs(x = NULL, y = "Share of urban European population")
-```
-
-The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to concentration in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))[These population data have been derived from @devries1984, appendix 1; a digitized version of this dataset is published in @lincoln_europop]
-The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in French and English cities increased.
-Dutch urban populations peaked in 1650, the same time that the Dutch printmaking network had the lowest EI index, i.e. the greatest preference for _internal_ connections.
-These observed shifts in international interaction may have been driven less by particular disruptive historical moments or artistic movements, and more by gradually building structural incentives powered by changes in populations and the necessarily-collaborative nature of print production.
-
-The onset of the Dutch revolt, the blockade of the Scheldt, the end of the English civil war: each of these events may have tipped the balance of incentives and sparked a sudden shift in print producers' organization.
-However, if these events were _necessary_ to cause these organizational changes, they were not _sufficient_.
 Although specific historical events may certainly have affected the ways that printmakers and publishers from different countries worked together, political changes or military conflicts were short-term happenings that occurred within a landscape of long-term incentives and population trends.
-In other words, the effects of one specific conflict or economic shift alone does not tell the entire story.
-Relatively simple network effects resulting from the gradual buildup of printmaking expertise in different regions can offer a broader explanation for why the internal/external connecting ratios of each of these national communities changed in the dramatic way that they did, transforming gradual changes in population into puncutated shifts in the way that print production communities organized.
+In other words, the effects of one specific conflict or economic shift alone cannot not tell the entire story.
+Relatively simple network effects resulting from the gradual buildup of printmaking expertise in different regions may offer a broader explanation for why the internal/external connecting ratios of each of these national communities changed in the dramatic way that they did.
+Gradual changes, such as generational population growth and decline, can frequently manifest as puncutated shifts in the way that any social network organizes.
 
 [^randomcent]: On accounting for these properties of the EI index, see [@mariolis1985]; [@hanneman2005, 220--223].
 
@@ -547,6 +481,73 @@ Both the German and Italian printmaking communities show consistently fewer inte
 The privations of the Thirty Years' War, which persisted in the German region long after the nominal end of the conflict in 1648, may have inhibited the German print production industry from establishing as many international contacts as a market of their size would have suggested.[@rabb1962]
 As for Italian printmakers, their unexpectedly low number of external connections may have been due, in part, to the plague of 1656 and the economic collapse that followed in its wake.
 The Italian peninsula would still be recovering from this disaster a century later.[@alfani2013]
+
+It seems little coincidence that the regional networks that were primarily inward-connecting or evenly connecting in the mid-sixteenth century (the southern Netherlands, Italy, and Germany) also had some of the longest-established printmaking traditions, dating back to the late fifteenth century.[@landau1994, ch 1.]
+Building up a viable regional production network took time and resources.
+Over time, these externally-dependent regions would begin to cultivate more native talent, knowledge, and physical resources, as experienced printmakers trained new students and transitioned from making prints to establishing their own publishing firms.
+As domestic capacity grew, so too would the incentive for artists and printmakers to partner with domestic collaborators.
+Already possessing well-developed printmaking infrastructure, those regions could host relatively self-sustaining networks of print producers.
+Aspiring printmakers from areas with smaller, less developed printmaking communities, on the other hand, would have had little choice but to reach out to foreign centers with more established printmaking infrastructure.
+
+Under this theory, we'd expect to see a shared pattern of "inward turns" at different points in time for  northern Netherlands, France, and England.
+Notably, the shifts were most abrupt in communities that were concentrated in particularly small geographic areas (the Northern and Southern Netherlands, England), with more gradual changes in the communities spread across a larger area (Italian, French, and German).
+
+(ref:europe-pop) Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. (\"Other\" regions include Scandinavia, Scotland and Ireland, and eastern Europe).
+
+```{r europe-pop, fig.cap = "(ref:europe-pop)"}
+region_map <- c(
+  "The Netherlands" = "Dutch",
+  "Belgium" = "Flemish",
+  "France" = "French",
+  "Germany" = "German",
+  "Switzerland" = "German",
+  "Northern Italy" = "Italian",
+  "Central Italy" = "Italian",
+  "Southern Italy" = "Italian",
+  "England and Wales" = "English",
+  "Scandinavia" = "Other",
+  "Scotland" = "Other",
+  "Ireland" = "Other",
+  "Spain" = "Iberian peninsula",
+  "Portugal" = "Iberian peninsula",
+  "Austria and Czechoslovakia" = "Other",
+  "Poland" = "Other"
+)
+
+pop_ratio <- europop %>%
+  mutate(nationality = plyr::revalue(region, region_map)) %>%
+  group_by(year, nationality) %>%
+  summarize(totalpop = sum(population, na.rm = TRUE)) %>%
+  group_by(year) %>%
+  mutate(ratio = totalpop/sum(totalpop)) %>%
+  ungroup()
+
+labs <- pop_ratio %>% filter(
+  (nationality == "Italian" & year == 1600) |
+    (nationality == "Other" & year == 1600) |
+    (nationality == "German" & year == 1550) |
+    (nationality == "French" & year == 1700) |
+    (nationality == "English" & year == 1750) |
+    (nationality == "Dutch" & year == 1650) |
+    (nationality == "Flemish" & year == 1750) |
+    (nationality == "Iberian peninsula" & year == 1600))
+
+ggplot(pop_ratio, aes(x = year, y = ratio)) +
+  geom_line(aes(color = nationality), size = 1) +
+  geom_label_repel(data = labs, aes(label = nationality)) +
+  scale_color_brewer(palette = "Set2", guide = FALSE) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  labs(x = NULL, y = "Share of urban European population")
+```
+
+The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to concentration in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))[These population data have been derived from @devries1984, appendix 1; a digitized version of this dataset is published in @lincoln_europop]
+The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in French and English cities increased.
+Dutch urban populations peaked in 1650, the same time that the Dutch printmaking network had the lowest EI index, i.e. the greatest preference for _internal_ connections.
+These observed shifts in international interaction may have been driven less by particular disruptive historical moments or artistic movements, and more by gradually building structural incentives powered by changes in populations and the necessarily-collaborative nature of print production.
+
+The onset of the Dutch revolt, the blockade of the Scheldt, the end of the English civil war: each of these events may have tipped the balance of incentives and sparked a sudden shift in print producers' organization.
+However, if these events were _necessary_ to cause these organizational changes, they were not _sufficient_.
 
 # Exceptional Printmakers
 
