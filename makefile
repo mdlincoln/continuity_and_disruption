@@ -5,7 +5,7 @@ INPUT = mlincoln_print_network.Rmd
 OUT = _output.yml
 
 all: $(WORD) $(HTML)
-	open $<
+	open $?
 
 pdf: $(PDF)
 	open $(PDF)
