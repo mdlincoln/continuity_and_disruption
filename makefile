@@ -4,9 +4,11 @@ HTML = _book/introduction.html
 INPUT = mlincoln_print_network.Rmd
 OUT = _output.yml
 
-all: $(HTML) $(WORD)
+all: $(WORD) $(HTML)
+	open $<
 
 pdf: $(PDF)
+	open $(PDF)
 
 $(PDF): $(INPUT) $(OUT)
 	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"

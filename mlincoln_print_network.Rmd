@@ -73,13 +73,13 @@ The well-known collaboration between Hendrick Goltzius and Bartholomeus Spranger
 
 (ref:goltzius-wedding) Hendrick Goltzius, after Bartholomeus Spranger, *The Wedding Feast of Cupid and Psyche*, 1587. Engraving,  43.5 cm. x 86.1 cm. Rijksmuseum, Amsterdam.
 
-```{r goltzius-wedding, out.width = "3.5in", fig.cap="(ref:goltzius-wedding)"}
+```{r goltzius-wedding, fig.fullwidth = TRUE, out.width = "6in", fig.cap="(ref:goltzius-wedding)"}
 include_graphics("assets/images/goltzius_wedding.jpg")
 ```
 
 (ref:evdv) Esaias van de Velde, *Fort with defenses at Tholen on the Scheldt*, 1615--1616. Etching, 8.3 x 16.9 cm. Rijksmuseum, Amsterdam.
 
-```{r evdv, out.width = "3.5in", fig.cap="(ref:evdv)"}
+```{r evdv, fig.fullwidth = TRUE, out.width = "6in", fig.cap="(ref:evdv)"}
 include_graphics("assets/images/evdv.jpg")
 ```
 
@@ -109,16 +109,12 @@ In the absence of a single intuitive and convincing historical answer, we can tu
 # Oprationalizing International Interaction
 
 Computational network analysis is a discipline that attempts to formalize, or operationalize, the descripton of networks.[I use the term "operationalizing" in the sense discussed by @moretti2013-1.]
-While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studioes, or of patronage and collecting - computational network analysis demands that preicsly what makes up the members of a network, and the rules used to derive connections between those members, be defined very specifically.
-The benefit to adopting these strictures, however, is that it permits us to see the complex topological characterists of a network - how centralized or decentralized it is, the degree of interconnection between its constitutent groups, and which members act as key brokers of connections between disparate communities - that are invisible from the ground-level perspective seen when considering just one relationship at a time.
+While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studioes, or of patronage and collecting - computational network analysis demands precise definitions of who or what comprises the members of a network, and precisely what evidence is used to infer connections between those members.
+The benefit to adopting these strictures, however, is that it permits us to see the complex topological characterists of the resulting network - how centralized or decentralized it is, the degree of interconnection between its constitutent groups, and which members act as key brokers of connections between disparate communities - that are invisible from the ground-level perspective afforded when when considering just one relationship at a time.
 
-Such a picture is inevitably flattening; it necessitates discarding a great deal of information.
-For example, the production network discussed here is precisely that, a _production-focused_ network, rather than one that incorporates information about familial relationships, or financial relatinoships, or social relationships such as co-membership in a given parish or guild.
-But, like an X-radiograph of a painting, with the loss of some information comes the gain of information othewise unseen.
-Careful focus on the patterns of print co-production will, in fact, offer us a much broader structural context misisng from other information-rich but scale-poor studies.
-Together, both perspectives are more valuable than either one seen alone.
+Understanding precisely what is included --- and what is not --- in those source data is essential when interpreting the results of any one quantiative network measurement.
 
-## Data
+## Data: Forming Network(s)
 
 The data for this study have been drawn from the collections of the British Museum in London (hereafter BM) and the Rijksmuseum in Amsterdam (hereafter RKM). (Table \@ref(tab:nationality-counts))
 Both of these collections feature broad and deep collections of European prints (and Dutch and Flemish prints in particular) from this period.
@@ -167,67 +163,21 @@ Rather than producing a single network encompassing every constitutent and conne
 
 (ref:timeslice) Examples. (Previously published in Lincoln 2016.)
 
-```{r timeslice, fig.cap="(ref:timeslice)"}
-library(RColorBrewer)
-
-yr_graph <- function(early, late) {
-
-  sg_edge <- bm_print_edges %>%
-    filter(between(datestart, early, late)) %>%
-    semi_join(bm_print_nodes %>% filter(birth <= late, death >= early), by = c("target" = "id")) %>%
-    semi_join(bm_print_nodes %>% filter(birth <= late, death >= early), by = c("source" = "id")) %>%
-    semi_join(bm_node_nationalities %>% filter(nationality == "Dutch"), by = c("target" = "id")) %>%
-    semi_join(bm_node_nationalities %>% filter(nationality == "Dutch"), by = c("source" = "id"))
-
-  sg_node <- bm_print_nodes %>% filter(id %in% union(sg_edge$target, sg_edge$source))
-
-  sg <- graph_from_data_frame(sg_edge, directed = FALSE, vertices = sg_node)
-  sg <- simplify(sg)
-  big_c_memb <- components(sg)$membership == 1
-
-  # Big component
-  bsg <- induced_subgraph(sg, vids = V(sg)[big_c_memb])
-
-  V(bsg)$degree <- degree(bsg, normalized = TRUE)
-
-  # Top names
-  top_names <- V(bsg)$degree %in% tail(sort(V(bsg)$degree), 10)
-
-  dpal <- brewer.pal(9, name = "Greens")[1:7]
-
-  V(bsg)$label <- ifelse(top_names, V(bsg)$realname, "")
-  V(bsg)$degcat <- cut(V(bsg)$degree, breaks = unique(quantile(V(bsg)$degree, probs = seq(0, 1, 0.1))))
-  V(bsg)$color <- dpal[V(bsg)$degcat]
-  V(bsg)$frame.color <- "gray"
-  E(bsg)$color <- "gray"
-  V(bsg)$size = 30 * V(bsg)$degree + 3
-
-  return(bsg)
-}
-
-g1 <- yr_graph(early = 1580, late = 1590)
-g2 <- yr_graph(early = 1640, late = 1650)
-
-
-par(mfrow = c(2, 2), mar = c(0, 0, 0, 0))
-plot(
-  g1,
-  layout = layout_with_fr,
-  vertex.label.family = "Helvetica",
-  vertex.label.color = "black",
-  vertex.label.cex = 0.4)
-text(0, 1.2, labels = "1580-1590")
-plot(
-  g2,
-  layout = layout_with_fr,
-  vertex.label.family = "Helvetica",
-  vertex.label.color = "black",
-  vertex.label.cex = 0.4)
-text(0, 1.2, labels = "1640-1650")
+```{r timeslice, fig.cap="(ref:timeslice)", fig.fullwidth = TRUE, out.width = "6in"}
+include_graphics("assets/images/timeslice_examples.pdf")
 ```
 
+Such a picture is inevitably flattening; it necessitates discarding a great deal of information.
+For example, the production network discussed here is precisely that, a _production-focused_ network, rather than one that incorporates information about familial relationships, or financial relatinoships, or social relationships such as co-membership in a given parish or guild.
+This approach is, moreover, topological, rather than topographical: spatial information is not explicitly considered in this particular analysis.
+But, like an X-radiograph of a painting, with the loss of some information comes the gain of information othewise unseen.
+Careful focus on the patterns of print co-production will, in fact, offer us a much broader structural context misisng from other information-rich, but scale-poor, studies.
+Together, both perspectives are more valuable than either one seen alone.
+
+## Measurement: External/Internal Interaction
+
 When, and to what extent, do actors who belong to one category make connections to each other, versus to actors in another?
-This is a common question in network analysis, and can be measured by using the group-external/group-internal index (hereafter EI index).[See, for example, @matos2014, 15]
+This is a common question in network analysis, and can be measured by using the group-external/group-internal index (hereafter called the "EI index").[See, for example, @matos2014, 15]
 The EI index measures the balance between the number connections actors made within a specified group (in this case, nationality) versus those they made to actors outside that group.[^krackhardt] (Figure \@ref(fig:eii-example))
 This index can work at several scales.
 It can be used to quantify an entire group's propensity to connect with other groups (e.g. Dutch artists connecting to non-Dutch artists).
@@ -238,13 +188,8 @@ One can also measure the EI index of a single individual, comparing the number o
 $$\epsilon = \frac{n_e - n_i}{n_e + n_i}$$
 
     Originally proposed in [@krackhardt1988, 127--129]; also see [@hanneman2005, 128--132].
-
-Demarcating the "borders" of nationality in the early modern period is an inherently tricky problem, perhaps no more so than in the case of the Low Countries during the age of the Eighty Years War.[On the challenge of constructing the right national context for Netherlandish printmakers in particular, see @kok2015, 348.]
-The Dutch 1581 Act of Abjuration (in the wake of the Union of Utrecht two years prior) marks the official schism between the seventeen United Provinces in the northern Netherlands and the territories of the Spanish-controlled southern Netherlands.
-And while this break is a convenient historical landmark, it was soon followed by large waves of emigration from the south as Protestants and other non-Catholics fled religious persecution in Antwerp for the relatively more tolerant north.
-Many of these migrants were painters like Gillis van Coninxloo, Clara Peeters, and Roelandt Savery, who had an abiding impact on artistic development in the United Provinces.
-
-(ref:eii-example) A network with three groups of 20 nodes each. Group A is densely interconnected, so while its members do make some external connections, by in large they connect to each other. Therefore, that group has a negative EI index. Nodes in group B, on the other hand, make a slim majority of their connections _externally_, giving that group a positive index. Nodes in group C connect exclusively to each other, and so that group has the lowest possible EI index of -1.
+    
+    (ref:eii-example) A network with three groups of 20 nodes each. Group A is densely interconnected, so while its members do make some external connections, by in large they connect to each other. Therefore, that group has a negative EI index. Nodes in group B, on the other hand, make a slim majority of their connections _externally_, giving that group a positive index. Nodes in group C connect exclusively to each other, and so that group has the lowest possible EI index of -1.
 
 ```{r eii-example, fig.cap="(ref:eii-example)"}
 a <- sample_gnm(20, 50)
@@ -297,6 +242,12 @@ par(mar = c(6, 3, 0, 3))
 barplot(c(a_eii, b_eii, c_eii), xlab = "<- More Internal       EI Index       More External ->", ylab = "Group", names.arg = c("A", "B", "C"), col = pal, xlim = c(-1, 1), horiz = TRUE)
 ```
 
+It goes without saying that one must always approach post-hoc categorizations such as "artist nationalites" coded by modern-day researchers, however.
+Demarcating the "borders" of nationality in the early modern period is an inherently tricky problem, perhaps no more so than in the case of the Low Countries during the age of the Eighty Years War.[On the challenge of constructing the right national context for Netherlandish printmakers in particular, see @kok2015, 348.]
+The Dutch 1581 Act of Abjuration (in the wake of the Union of Utrecht two years prior) marks the official schism between the seventeen United Provinces in the northern Netherlands and the territories of the Spanish-controlled southern Netherlands.
+And while this break is a convenient historical landmark, it was soon followed by large waves of emigration from the south as Protestants and other non-Catholics fled religious persecution in Antwerp for the relatively more tolerant north.
+Many of these migrants were painters like Gillis van Coninxloo, Clara Peeters, and Roelandt Savery, who had an abiding impact on artistic development in the United Provinces.
+
 Flemish printmakers also emigrated to the north, including Nicolaes de Bruyn and Jan van Londerseel, both of whom moved to Rotterdam (Londerseel by 1610, and De Bruyn by 1617).[@vandercoelen1996, 24]
 As noted earlier, Flemish landscapes were a crucial inspiration for the popular idiom of local Dutch countryside print series that were popularized by Haarlem printmakers in the 1610s.[On this influence, see @sluijter2009; @porras2013; @onuf2014.]
 To split artists from these two countries can be an arbitrary division.[It is also worth noting that, for many foreign patrons, "Dutch" or "Flemish" was a distinction without a difference.
@@ -306,13 +257,19 @@ On the other hand, the distinction was important indeed for Dutch guild leaders 
 As a result, they planned regulations to protect native Dutch artists from this new competition.[@sluijter2009]
 The division has also remained undeniably useful for art historians, and is reflected in the datasets used for this analysis.
 Both the BM and the RKM database differentiate between "Dutch"/"Noord-Nederlands" and "Flemish"/"Zuid-Nederlands" artists.[^bmdf]
-For the purposes of this analysis, I will accept the present database classifications.[^belgian]
-While this is an imperfect compromise, a benefit to this computational framework is that future, alternative classification schemes for artist nationality may be quickly substituted in this analysis, and their ramifications compared to the results presented here.
 
 [^bmdf]: While the RKM assigns only one nationality per artist, the BM allows artists to take multiple nationalities, though only six printmaking artists have been tagged as both "Dutch" and "Flemish": Nicolas de Bruyn, Daniel van den Bremden, Egbert van Panderen, Gijsbert van Veen, and Hans Bol.
 
+For the purposes of this analysis, I will use the present database classifications, as a factor to be _tested_ in this analysis, rather than as a foundational premise.[^belgian]
+As metadata about each artist in this network, current naitonal labels may say one thing... but how do the communities defined by these post-hoc labels compare to the relationships, and the communities that emerge from said relationships, inferred from the production evidence considered here?
+If these modern national classifications were, indeed, "correct" in describing communities of print production, i.e., if the "national school" framework of art history were one that fit well the actual production practices of prints in the early modern period, then we would expect to find persistently negative EI indices, indicating majority-internal connections.
+
 [^belgian]: Both the RKM and BM begin to classify artists born in the Austrian Netherlands (post-1715) as "Belgian/Begisch", however there are only a small handful of such artists whose work falls into the 1550--1750 period examined here.
 For the purposes of this analysis, these few artists will be treated as Flemish.
+
+Of course, this is not the case.
+
+However, the precise ways in which the actual results contradict this expectation suggest critical avenues for further work.
 
 # Results: Catalysts and Sudden Shifts
 
