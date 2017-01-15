@@ -5,6 +5,8 @@ INPUT = mlincoln_print_network.Rmd
 
 all: $(HTML) $(WORD)
 
+pdf: $(PDF)
+
 $(PDF): $(INPUT)
 	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
 
