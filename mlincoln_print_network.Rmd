@@ -1,6 +1,10 @@
 ---
 title: "Continuity and Disruption in European Networks of Print Production, 1550-1750"
-author: "Matthew Lincoln"
+author: "Matthew D. Lincoln, Getty Research Institute"
+abstract: |
+  English Abstract\: Quantifying the potential historical professional networks that we can infer from surviving print impressions offers novel insight into the place of Dutch and Flemish printmaking communities within the larger European world of artistic prints. This analysis traces a _longue durée_ print production history, and troubles existing national categorizations.
+  
+  Bio\: Dr. Matthew D. Lincoln is a data research specialist at the Getty Research Institute, and has previously published in the _International Journal of Digital Art History_, _British Art Studies_, and _Perspective_.
 documentclass: article
 bibliography: ../zotero.bib
 csl: chicago-fullnote-bibliography.csl
