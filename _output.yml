@@ -1,4 +1,5 @@
-bookdown::word_document2: default
+bookdown::word_document2:
+  reference_docx: purdue_reference.docx
 bookdown::tufte_handout2:
   toc: false
   keep_tex: true
