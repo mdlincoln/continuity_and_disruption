@@ -267,7 +267,7 @@ As a result, they planned regulations to protect native Dutch artists from this 
 The division has also remained undeniably useful for art historians, and is reflected in the datasets used for this analysis.[^bmdf]
 
 [^bmdf]: Both the BM and the RKM database differentiate between "Dutch"/"Noord-Nederlands" and "Flemish"/"Zuid-Nederlands" artists.
-While the RKM assigns only one nationality per artist, the BM allows artists to take multiple nationalities, though only six printmaking artists have been tagged as both "Dutch" and "Flemish": Nicolas de Bruyn, Daniel van den Bremden, Egbert van Panderen, Gijsbert van Veen, and Hans Bol.
+While the RKM assigns only one nationality per artist, the BM allows artists to take multiple nationalities, though only six printmaking artists have been tagged as both "Dutch" and "Flemish": Nicolas de Bruyn, Daniel van den Bremden, Egbert van Panderen, Gijsbert van Veen, and Hans Bol. In cases where artists have been assigned multiple nationalities in the source data, they will be counted as both a domestic and an international when calculating the EI index, erring on the side of retaining as many potentially-pertinent links as possible, at the cost of slightly overstating the impact of mulitply-classified individuals.
 
 For the purposes of this analysis, I will use the present database classifications.
 But it is critical to understand that these classifications will be a factor to be _tested_ in this analysis, rather than aceppted as a foundational truth.[^belgian]
