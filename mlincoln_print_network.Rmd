@@ -66,8 +66,8 @@ Lucas van Leyden attracted international acclaim for his masterful handling of t
 Among his admirers was no less than the Nuremberg master Albrecht Dürer, as well as the Italian Marcantonio Raimondi.[@marlier1971, 29; on Marcantonio's quotation of Lucas, see @barnes2010, 16.]
 
 Beyond these individual artistic connections, collaborative print production began to take on international dimensions with the rise of large print production houses and the professionalization of engraving in the mid-sixteenth century.
-Some Dutch printmakers had built thriving careers creating engravings for Italian painters in Venice and Rome, enjoying the fruits of northern Europeans' reputation for printmaking skill that had been promulgated by Giorgio Vasari.[@landau1983; @gregory2012, 2--4.]
-Cornelis Cort, in Rome from 1565--1578, found great success as a printmaker for major Italian painters such as Titian, Giulio Clovio, Girolamo Muziano, and Federico Zuccaro.[@sellink1994; @sman2005, 251--252]
+Some Dutch printmakers had built thriving careers creating engravings for Italian painters in Venice and Rome, enjoying the fruits of northern Europeans' reputation, promulgated by Giorgio Vasari, for printmaking prowess.[@landau1983; @gregory2012, 2--4.]
+For example, Cornelis Cort, in Rome from 1565--1578, found great success as a printmaker for major Italian painters such as Titian, Giulio Clovio, Girolamo Muziano, and Federico Zuccaro.[@sellink1994; @sman2005, 251--252]
 In addition to German and Italian centers, the mid-sixteenth-century publishing house of Hieronymus Cock, _Aux Quatre Vents_, frequently contracted with Dutch engravers such as Philips Galle to produce plates to be published in Antwerp.[For example, during his early career in Haarlem between 1557--1570, Philips Galle engraved several prints to be published in Antwerp by Cock; @sellink1997]
 The Haarlem master Hendrick Goltzius would continue this model of remote collaboration even after setting up his own independent studio in 1582.
 The well-known collaboration between Hendrick Goltzius and Bartholomeus Spranger, court painter to Rudolf II, illustrates how the design, cutting, and marketing of a print could easily take on an international scope.[@leeflang2003, 82--83, cat. 28] (Figure \@ref(fig:goltzius-wedding))
@@ -88,16 +88,16 @@ include_graphics("assets/images/goltzius_wedding.jpg")
 include_graphics("assets/images/evdv.jpg")
 ```
 
-But portions of this printmaking community focused on strong domestic connection as well.
+But portions of this printmaking community also developed strong domestic connections as well.
 In the first decades of the seventeenth century, Haarlem printmakers Claesz Jansz Visscher, Esaias van de Velde I, Willem Buytewech, Hercules Segers, and Jan van de Velde II, began to produce their own versions of the local, rustic landscape view first popularized by Hieronymus Cock in Antwerp.[@freedberg1980, 11--15; @levesque1994, ch. 6.; on the relationship of the anonymously-designed _Small Landscapes_ to the printed landscape tradition in Haarlem, see @onuf2011; @onuf2014] (Figure \@ref(fig:evdv))
-All of these printmakers joined the Haarlem guild in 1612, forming a critical mass of pioneering talent who each took up the printed landscape as their subject in one form or another.
-In the following decades, an increasing number of Dutch engraver-publishers such as Hendrick Hondius and Crispijn de Passe cultivated a stock primarily produced by fellow Dutch artists.[@orenstein1996, 47.]
+All of these printmakers joined the Haarlem guild in 1612, forming a critical mass of pioneering talent.
+In the following decades, an increasing number of Dutch engraver-publishers such as Hendrick Hondius and Crispijn de Passe cultivated stocks of plates primarily produced by fellow Dutch artists.[@orenstein1996, 47.]
 
 To what extent, however, can this handful individuals be taken to stand for the overall balance of international vs. domestically-focused Dutch print production partnerships at different points in time?
-It is all too easy enough to generate opposing plausible historical scenarios that would explain either increasing international connections by Dutch designers, plate cutters, and publishers - or, on the other hand, their increased domesticization.
+It is all too easy to generate opposing plausible historical scenarios that would explain either increasing international connections by Dutch designers, plate cutters, and publishers - or, on the other hand, their increased domesticization.
 
 In the late sixteenth century, the northern Netherlands entered a golden age of economic growth thanks to their unmatched control of international sea trade around the world.
-Several waves of Dutch artists traveled south to study and paint in Italy, establishing an expatriate community in Rome.[On seventeenth-century Dutch artists' interest in Italy, see @schatborn2001; @harwood2002. Moreover, as their prosperity increased, many Dutch authors, musicians, and artists sought to add internationalizing elements to their works, as a way of asserting Dutch cultural legitimacy in the broader world of early modern Europe; see @kettering1983]
+Several waves of Dutch artists traveled south to study and paint in Italy, establishing an expatriate community in Rome.[On seventeenth-century Dutch artists' interest in Italy, see @schatborn2001; @harwood2002. Moreover, as their prosperity increased, many Dutch authors, musicians, and artists sought to add internationalizing elements to their works as a way of asserting Dutch cultural legitimacy in the broader world of early modern Europe; see @kettering1983]
 Prominent Dutch and Flemish portraitists found many patrons in the English court, and printmakers from the Low Countries were in particular demand in London.
 Likewise, foreign publishers and print sellers may have found the thriving Northern Netherlands a particularly attractive market.[@hoftijzer2001, 251--252.]
 
@@ -114,7 +114,7 @@ In the absence of a single intuitive and convincing historical answer, we can tu
 
 Computational network analysis is a discipline that attempts to formalize, or operationalize, the description of networks.[I use the term "operationalizing" in the sense discussed by @moretti2013-1.]
 While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studios, or of patronage and collecting - computational network analysis demands precise definitions of who or what comprises the members of a network, and precisely what evidence is used to infer connections between those members.
-The benefit to adopting these strictures, however, is that it permits us to see the complex topological characteristics of the resulting network (e.g. how centralized or decentralized it is, the degree of interconnection between its constituent groups, and which members act as key brokers of connections between disparate communities) that are invisible from the ground-level perspective afforded when considering just one relationship at a time.
+The benefit to adopting these strictures, however, is that it permits us to see the complex topological characteristics of the resulting network (e.g. how centralized or decentralized it is, the degree of interconnection between its constituent groups, and which members act as key brokers of connections between disparate communities) that are invisible from the ground-level perspective afforded when considering relationships one at a time.
 
 Understanding precisely what is included --- and what is not --- in those source data is essential when interpreting the results of any one quantitative network measurement.
 
@@ -177,7 +177,7 @@ include_graphics("assets/images/timeslice_examples.png")
 Such a picture is inevitably flattening; it necessitates discarding a great deal of information.
 For example, the production network discussed here is precisely that, a _production-focused_ network, rather than one that incorporates information about familial relationships, or financial relatinoships, or social relationships such as co-membership in a given parish or guild.
 This approach is, moreover, topological, rather than topographical: spatial information is not explicitly considered in this particular analysis.
-But, like an X-radiograph of a painting, with the loss of some information comes the gain of information othewise unseen.
+But, as with an X-radiograph of a painting, with the loss of some information comes the gain of information othewise unseen.
 Careful focus on the patterns of print co-production will, in fact, offer us a much broader structural context misisng from other information-rich, but scale-poor, studies.
 Together, both perspectives are more valuable than either one seen alone.
 
@@ -251,7 +251,7 @@ par(mar = c(6, 3, 0, 3))
 barplot(c(a_eii, b_eii, c_eii), xlab = "<- More Internal       EI Index       More External ->", ylab = "Group", names.arg = c("A", "B", "C"), col = pal, xlim = c(-1, 1), horiz = TRUE)
 ```
 
-It goes without saying that one must always approach with caution categorizations such as "artist nationalities" coded by modern-day researchers.
+It is crucial to reiterate that one must always approach with caution categorizations such as "artist nationalities" coded by modern-day researchers.
 Demarcating the borders of nationality in the early modern period is an inherently tricky problem, perhaps no more so than in the case of the Low Countries during the age of the Eighty Years War.[On the challenge of constructing the right national context for Netherlandish printmakers in particular, see @kok2015, 348.]
 The Dutch 1581 Act of Abjuration (in the wake of the Union of Utrecht two years prior) marks the official schism between the seventeen United Provinces in the northern Netherlands and the territories of the Spanish-controlled southern Netherlands.
 And while this break is a convenient historical landmark, it was soon followed by large waves of emigration from the south as Protestants and other non-Catholics fled religious persecution in Antwerp for the relatively more tolerant north.
@@ -270,16 +270,16 @@ The division has also remained undeniably useful for art historians, and is refl
 While the RKM assigns only one nationality per artist, the BM allows artists to take multiple nationalities, though only six printmaking artists have been tagged as both "Dutch" and "Flemish": Nicolas de Bruyn, Daniel van den Bremden, Egbert van Panderen, Gijsbert van Veen, and Hans Bol.
 
 For the purposes of this analysis, I will use the present database classifications.
-But it is critical to understand that these classifications will be a factor to be _tested_ in this analysis, rather than a foundational premise or truth.[^belgian]
-The metadata about each artist in this network may assign the artist to a particular national/regional community.
-But how do the communities defined by these post-hoc labels compare to the relationships, and the communities that emerge from said relationships, inferred from the production evidence considered here?
+But it is critical to understand that these classifications will be a factor to be _tested_ in this analysis, rather than aceppted as a foundational truth.[^belgian]
+The modern metadata about each artist in this network may assign the artist to a particular national/regional community.
+But how do the communities defined by these post-hoc labels compare to the relationships, and the communities that emerge from said relationships, inferred from the production evidence of the objects considered here?
 If these modern national classifications were, indeed, "correct" in describing communities of print production, i.e., if the "national school" framework of art history were one that fit well the actual production practices of prints in the early modern period, then we would expect to find persistently negative EI indices, indicating majority-internal connections.
 
 [^belgian]: Both the RKM and BM begin to classify artists born in the Austrian Netherlands (post-1715) as "Belgian/Begisch", however there are only a small handful of such artists whose work falls into the 1550--1750 period examined here.
 For the purposes of this analysis, these few artists will be treated as Flemish.
 
-Of course, this will not be the case.
-But precisely _when_ the actual results contradict this expectation will illuminate entirely new questions.
+As we will see, these modern labels do not overlay comfortably over the topological communities in thiese production networks.
+However, by understanding _when_ these production communities diverge from present-day classifications, we will gain a novel perspective on this golden age of Europoean printmaking.
 
 # Results: Catalysts and Sudden Shifts
 
@@ -315,10 +315,12 @@ Expanding our scope to look at other major European regions, the BM and RKM data
 Given the vast superiority of the BM's holdings in English prints (Table \@ref(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
 
 Dutch artists primarily connected to foreign collaborators up until the 1570s, when they shifted quickly to a roughly even split between domestic versus foreign connections.
-After this sudden shift, Dutch artists and printmakers continued to favor mostly domestic collaborators, hovering around an EI index of -0.5, i.e. making at least 75% of their connections to fellow Dutchmen.
+After this sudden shift, Dutch artists and printmakers continued to favor mostly domestic collaborators, hovering around an EI index of -0.5.
+That is, after this major shift they tended to make at least 75% of their connections to fellow Dutchmen.
 The group of artists classed as Flemish presents a rough inverse of this pattern, making most of their connections internally in the sixteenth and early seventeenth centuries, before quickly shifting around 1675 to majority-external connections.
 
 These results support the hypothesis that Dutch printmaking experienced a domestic "turn" not only in subject and style, but also in the infrastructure of print production itself.
+Two details are particularly noteworthy.
 It is somewhat surprising to note that this turn occurred in the 1570s, well before the commonly-acknowledged burst of particularly "domestic" subjects in Haarlem in the 1610s.
 Even more surprising is how swiftly this landscape of print production changed.
 Within just a few years, Dutch artists moved from making over three-quarters of their connections to foreign sources, to a roughly even split.
@@ -336,11 +338,12 @@ However, before attempting to interpret these trends, it is crucial to distingui
 Although specific historical events surely affected patterns of production between printmakers and publishers from different countries, political changes or military conflicts were short-term happenings that occurred within a landscape of equally-influential long-term incentives and population trends.[This draws, of course, on the French _Annales_ school of history. On the relevance of digital history to _longue durée_ approaches, see @guldi2014.]
 In other words, the effects of one specific conflict or economic shift alone cannot not tell the entire story of any given spike in these graphs.
 
-Relatively simple network effects resulting from the gradual build-up of printmaking expertise in different regions may offer a broader explanation for why the internal/external connecting ratios of each of these national communities changed in the dramatic way that they did.
-Gradual changes, such as generational population growth and decline, can frequently manifest as punctuated shifts in the way that complex social networks organize.[A classic discussion of this phenomenon is found in @watts1999, 53.]
-We want to differentiate which EI indices of these communities are _to be expected_ in any community of that size relative to its neighbors, and which are unexpectedly high (favoring international connections) or low (favoring domestic).[^randomcent]
+Relatively simple network effects may offer a broader explanation for why the internal/external connecting ratios of each of these national communities changed in the dramatic way that they did.
+In complex systems of all kinds, gradual changes such as generational population growth and decline can frequently manifest as punctuated shifts in the way that complex social networks organize.[A classic discussion of this phenomenon is found in @watts1999, 53.]
+Thus, the gradual build-up of printmaking expertise in different regions may _alone_ account for any one of these striking shifts, in which case it would be improper to speculate about a more temporally-bounded cause.
+To avoid this hazard, we want to differentiate which EI indices of these communities are _to be expected_ in any community of that size relative to its neighbors, and which are unexpectedly high (favoring international connections) or low (favoring domestic).[^randomcent]
 
-[^randomcent]: On accounting for these properties of the EI index, see [@mariolis1985]; [@hanneman2005, 220--223].
+[^randomcent]: On accounting for these properties of the EI index, see [@mariolis1985]; [@hanneman2005, 220--223]. On the use of random network simulation in analysis more generally, see [@zweig2016, ch. 6].
 
 To differentiate the expected from the exceptional, we first create a randomly generated network of the same size and makeup as that which we observe in our real museum data (Figure \@ref(fig:eii-sim-example)a), but absent any international connections.
 To decide how to simulate the creation of international connections, we must consider the type of network that printmaking demanded.
@@ -421,10 +424,10 @@ barplot(c(cug_a_eii, cug_b_eii, cug_c_eii), xlab = "<- More Internal       EI In
 ```
 
 Figure \@ref(fig:eii-sim) overlays the EI indices of these simulated networks on the results observed from the BM data, previously shown in figure \@ref(fig:all-nats-eii).
-By in large, both trends overalp: the simulated networks return similar results to those found in the empirical results.
+By in large, both trends overlap: the simulated networks return similar results to those found in the empirical results.
 In other workds, regional print production capacity does, in fact, explain a great deal of the variation of these communities' balance of international versus domestic connections, including some of the most massive changes seen in \@ref(fig:all-nats-eii).
 
-(ref:eii-sim) Random graph EI indices compared to empirical EI indices. The black lines show the EI indices observed in the BM data, while the red ribbons show the range of results returned by simulated networks of the same size and overall connectivity. Some areas with diverging results are highlighted and annotated with concurrent historical events. For visual clarity, only the BM results are displayed here, however highlighted areas mark significant divergences that appeared in simulations of both datasets.
+(ref:eii-sim) Random graph EI indices compared to empirical EI indices. The black lines show the EI indices observed in the BM data, while the red ribbons show the range of results returned by simulated networks of the same size and overall connectivity. Some areas with diverging results are highlighted and annotated with concurrent historical events. For visual clarity, only the BM results are displayed here. However, highlighted areas mark significant divergences that appeared in simulations of both datasets.
 
 [Insert figure \@ref(fig:eii-sim) here.]
 
@@ -497,7 +500,7 @@ Conversely, in the southern Netherlands, a higher-than-expected EI index (i.e. m
 
 One may also point (albeit with slightly less certainty, given the dissimilar results returned by the BM and RKM) to the possible influence of English and French monarchs' artistic priorities on their countries' printmaking communities.
 An unexpectedly high number of international connections in the English printmaking community between 1625 and 1649 coincides with the reign of Charles I, who imported a wide range of both continental artworks and artists to London during his rule.
-In France, far more _internal_ connections between French printmakers are found than expected are found during the reign of Louis XIV between 1643 and 1715.
+In France, far more _internal_ connections between French printmakers are found than expected during the reign of Louis XIV between 1643 and 1715.
 In 1655, the _Académie royale de peinture et sculpture_ began to admit printmakers, legitimizing the medium as a fine art rather than a mechanical craft.[@reed1998, 18--19.]
 The Sun King also issued a large number of print privileges during his reign.[@fuhring2002]
 
@@ -552,14 +555,14 @@ labs <- pop_ratio %>% filter(
 
 ggplot(pop_ratio, aes(x = year, y = ratio)) +
   geom_line(aes(color = nationality), size = 1) +
-  geom_label_repel(data = labs, aes(label = nationality)) +
+  geom_label_repel(data = labs, aes(label = nationality), min.segment.length = unit(0, "lines")) +
   scale_color_brewer(palette = "Set2", guide = FALSE) +
   scale_y_continuous(labels = scales::percent) +
   theme_bw() +
   labs(x = NULL, y = "Share of urban European population")
 ```
 
-The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to concentration in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))
+The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to consolidation in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))
 The share of urban populations living in Italian and German cities decreased between 1500--1800, while the share living in Dutch, French and English cities increased.
 The shifts observed in international interaction may have been driven less by particular disruptive historical moments or artistic movements, and more by gradually building structural incentives powered by these changes in populations and the necessarily-collaborative nature of print production.
 
@@ -568,7 +571,7 @@ The shifts observed in international interaction may have been driven less by pa
 This long-term view of print production is a challenging one for traditional, artist-based perspectives on the history of artistic printmaking.
 At the scale of hundreds or thousands of artists working over two centuries, the broad contours of international print production appear to be determined more by demographic changes, rather than the impacts of specific artists, or turning points in political or military history.
 And yet, the individual experience of international collaboration and exchange varied widely in this period. (Figure \@ref(fig:ind-eii))
-While space here is too limited to explore, it is worth illuminating a very brief example of the individual patterns to be found within this macro-history.
+While space here is too limited to explore these examples fully, it is worth illuminating a very brief example of the individual patterns to be found within this macro-history.
 
 [Insert figure \@ref(fig:ind-eii) here.]
 
@@ -592,14 +595,14 @@ rkm_APrPu_alive$nat_trends %>%
   geom_line(alpha = 0.5, size = 1) +
   scale_color_brewer(palette = "Dark2", guide = FALSE) +
   geom_line(data = ind_line(target_names), aes(color = name)) +
-  geom_label_repel(data = filter(group_by(ind_line(target_names), name), row_number(desc(eii)) == 1), aes(label = name, color = name), box.padding = unit(2, "lines")) +
+  geom_label_repel(data = filter(group_by(ind_line(target_names), name), row_number(desc(eii)) == 1), aes(label = name, color = name), box.padding = unit(3, "lines"), , min.segment.length = unit(0, "lines")) +
   ylim(-1, 1) +
   facet_wrap(~nationality, ncol = 3, labeller = labeller(nationality = c("Dutch" = "Overall Dutch EII", "Flemish" = "Overall Flemish EII"))) +
   theme_bw() +
   labs(y = "EI Index", x = NULL)
 ```
 
-Among Flemish print producers, while prominent engravers in the Galle, Wierix, and De Jode families tended to make most of their connections to Flemish collaborators, members of the Sadeler family consistently rank among the more internationally-focused Flemish print producers.
+Among Flemish print producers, while prominent engravers in the Galle, Wierix, and De Jode families tended to make most of their connections to Flemish collaborators, members of the Sadeler family consistently rank among the more internationally-focused Flemish print producers.[Printmaking dynasties were a distinctive feature of Flemish printmaking organization; such multigenerational print businesses were far less dominant in the northern provinces; @lincoln2016-dah, 149.]
 Aegidius Sadeler maintained a roughly even split between collaboration with Flemish and artists and publishers versus foreign ones.[See @limouze1994 for an account of Jan's early work in Mainz and Frankfurt; on Munich, see @limouze2009.]
 Meanwhile, standing in contrast to the overall inward-focus of his fellow mid-seventeenth-century Dutch printmakers, such as Jonas Suyderhoef, the exceptionally international Cornelis Bloemaert found great success working in Paris and, later, Rome.[On Bloemaert, see @baldinucci1767, 131--138; @hoogewerff1952, 71, @roethlisberger1993, 513--526; the unexpected centrality of Suyderhoef to this production network is discussed in @lincoln2016-dah, 150.] (Figure \@ref(fig:bloemaert-rivergod).)
 
