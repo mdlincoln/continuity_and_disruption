@@ -14,13 +14,13 @@ pdf: $(PDF)
 	open $?
 
 $(PDF): $(INPUT) $(OUT)
-	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
+	Rscript -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
 
 $(WORD): $(INPUT) $(OUT)
-	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::word_document2')"
+	Rscript -e "bookdown::render_book('$<', 'bookdown::word_document2')"
 
 $(HTML): $(INPUT) $(OUT)
-	Rscript --vanilla -e "bookdown::render_book('$<', 'bookdown::gitbook')"
+	Rscript -e "bookdown::render_book('$<', 'bookdown::gitbook')"
 
 .PHONY: clean
 clean:
