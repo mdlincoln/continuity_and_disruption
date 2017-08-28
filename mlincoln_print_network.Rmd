@@ -555,11 +555,11 @@ labs <- pop_ratio %>% filter(
 
 ggplot(pop_ratio, aes(x = year, y = ratio)) +
   geom_line(aes(color = nationality), size = 1) +
-  geom_label_repel(data = labs, aes(label = nationality), min.segment.length = unit(0, "lines")) +
   scale_color_brewer(palette = "Set2", guide = FALSE) +
   scale_y_continuous(labels = scales::percent) +
   theme_bw() +
-  labs(x = NULL, y = "Share of urban European population")
+  labs(x = NULL, y = "Share of urban European population") +
+  facet_wrap(~ nationality)
 ```
 
 The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to consolidation in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))
