@@ -163,7 +163,7 @@ bm_print_count %>%
 
 Each print in the collection is treated as evidence of a professional relationship (whether direct or indirect) at a certain point in time.
 For example, the print in Figure \@ref(fig:goltzius-wedding) would be used to create a connection between Hendrick Goltzius and Bartholomeus Spranger during the year of 1587.[For an in-depth discussion of these data and the methodology for inferring production networks from object-based collections, see @lincoln2016-dah, 138-141.]
-Rather than producing a single network encompassing every constitutent and connection from 200 years of print production, we can instead construct snapshots, or slices, of the entwork as it may have appeared in a given period of time based on the surviving evidence that we have.
+Rather than producing a single network encompassing every constitutent and connection from 200 years of print production, we can instead construct snapshots, or slices, of the network as it may have appeared in a given period of time based on the surviving evidence that we have.
 In this way, it is possible to chart the change in certain network-wide metrics over time.
 
 [Insert figure \@ref(fig:timeslice) here.]
