@@ -113,13 +113,15 @@ In the absence of a single intuitive and convincing historical answer, we can tu
 # Operationalizing International Interaction
 
 Computational network analysis is a discipline that attempts to formalize, or operationalize, the description of networks.[I use the term "operationalizing" in the sense discussed by @moretti2013-1.]
+When applied to historical subjects, network analysis can recast the way we describe the behaviors of individuals and groups, and alter the narratives we use to explain historical events.[@hanneman2005, 45--50]
+Over the past few decades, historians have begun to evaluate earlier, loosely-defined conceptions of networks against mathematical network models constructed from historic records, most notably John Padgett's work with both Christopher Ansell and Paul McLean on social networks in Renaissance Florence.[@padgett1996; @padgett2006; For an historiography of historical social network analysis, see @wetherell1998; @lemercier2011]
+
 While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studios, or of patronage and collecting - computational network analysis demands precise definitions of who or what comprises the members of a network, and precisely what evidence is used to infer connections between those members.
 The benefit to adopting these strictures, however, is that it permits us to see the complex topological characteristics of the resulting network (e.g. how centralized or decentralized it is, the degree of interconnection between its constituent groups, and which members act as key brokers of connections between disparate communities) that are invisible from the ground-level perspective afforded when considering relationships one at a time.
 
-Understanding precisely what is included --- and what is not --- in those source data is essential when interpreting the results of any one quantitative network measurement.
-
 ## Data: Forming Network(s)
 
+Understanding precisely what is included --- and what is not --- in source data is essential when interpreting the results of any one quantitative network measurement.
 The data for this study have been drawn from the collections of the British Museum in London (hereafter BM) and the Rijksmuseum in Amsterdam (hereafter RKM). (Table \@ref(tab:nationality-counts))
 Both of these collections feature broad and deep collections of European prints (and Dutch and Flemish prints in particular) from this period.
 Moreover, each museum has released meticulous curatorial data about these collections amenable to computational processing.
