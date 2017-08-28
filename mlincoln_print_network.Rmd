@@ -117,7 +117,7 @@ When applied to historical subjects, network analysis can recast the way we desc
 Over the past few decades, historians have begun to evaluate earlier, loosely-defined conceptions of networks against mathematical network models constructed from historic records, most notably John Padgett's work with both Christopher Ansell and Paul McLean on social networks in Renaissance Florence.[@padgett1996; @padgett2006; For an historiography of historical social network analysis, see @wetherell1998; @lemercier2011]
 
 While the concept of "network" may seem familiar to many art historians - whether networks of stylistic influence, of artist families and studios, or of patronage and collecting - computational network analysis demands precise definitions of who or what comprises the members of a network, and precisely what evidence is used to infer connections between those members.
-The benefit to adopting these strictures, however, is that it permits us to see the complex topological characteristics of the resulting network (e.g. how centralized or decentralized it is, the degree of interconnection between its constituent groups, and which members act as key brokers of connections between disparate communities) that are invisible from the ground-level perspective afforded when considering relationships one at a time.
+The benefit of adopting these strictures, however, is that it permits us to see the complex topological characteristics of the resulting network (e.g. how centralized or decentralized it is, the degree of interconnection between its constituent groups, and which members act as key brokers of connections between disparate communities) that are invisible from the ground-level perspective afforded when considering relationships one at a time.
 
 ## Data: Forming Network(s)
 
@@ -165,7 +165,7 @@ bm_print_count %>%
 
 Each print in the collection is treated as evidence of a professional relationship (whether direct or indirect) at a certain point in time.
 For example, the print in Figure \@ref(fig:goltzius-wedding) would be used to create a connection between Hendrick Goltzius and Bartholomeus Spranger during the year of 1587.[For an in-depth discussion of these data and the methodology for inferring production networks from object-based collections, see @lincoln2016-dah, 138-141. As explained there, I will be keeping the BM and RKM datasets separate, running the same analysis in parallel and comparing the results from each. This will function as a check against the particular collecting histories of each institution. Where we see similar results from both institutions, we can be more confident that the results aren't merely artifacts of one colleciton's peculiar lineage. Where we see diverging results, we will need to be more conservative when interpreting it.]
-Rather than producing a single network encompassing every constitutent and connection from 200 years of print production, we can instead construct snapshots, or slices, of the network as it may have appeared in a given period of time based on the surviving evidence that we have.
+Rather than producing a single network encompassing every constituent and connection from 200 years of print production, we can instead construct snapshots, or slices, of the network as it may have appeared in a given period of time based on the surviving evidence that we have.
 In this way, it is possible to chart the change in certain network-wide metrics over time.
 
 [Insert figure \@ref(fig:timeslice) here.]
@@ -187,7 +187,7 @@ Together, both perspectives are more valuable than either one seen alone.
 
 When, and to what extent, do actors who belong to one category make connections to each other, versus to actors in another?
 This is a common question in network analysis, and can be measured by using the group-external/group-internal index (hereafter called the "EI index").[See, for example, @matos2014, 15]
-The EI index measures the balance between the number connections actors made within a specified group (in this case, nationality) versus those they made to actors outside that group.[^krackhardt] (Figure \@ref(fig:eii-example))
+The EI index measures the balance between the number of connections actors made within a specified group (in this case, nationality) versus those they made to actors outside that group.[^krackhardt] (Figure \@ref(fig:eii-example))
 This index can work at several scales.
 It can be used to quantify an entire group's propensity to connect with other groups (e.g. Dutch artists connecting to non-Dutch artists).
 A positive EI index indicates that nodes within that group made most of their connections to nodes belonging to other groups, while a negative EI index indicates those nodes made most of their connections internally.
@@ -508,7 +508,7 @@ Such a result underlines the enduring effect that Flemish migration had on the a
 
 One may also point (albeit with slightly less certainty, given the dissimilar results returned by the BM and RKM) to the possible influence of English and French monarchs' artistic priorities on their countries' printmaking communities.
 An higher-than-predicted number of international connections in the English printmaking community between 1625 and 1649 coincides with the reign of Charles I, who imported a wide range of both continental artworks and artists to London during his rule.
-In France, far more _internal_ connections between French printmakers are found than predicted during the reign of Louis XIV between 1643 and 1715.
+In France during the reign of Louis XIV between 1643 and 1715, far more _internal_ connections between French printmakers are found than predicted by the simluation.
 Several events during this period may have helped to fortify the already-burgeoning French printmaking community.
 In 1655, the _Académie royale de peinture et sculpture_ began to admit printmakers, legitimizing the medium as a fine art rather than a mechanical craft and thus raising the social esteem and professional position of printmakers.[@reed1998, 18--19.]
 The Sun King also issued a large number of print privileges during his reign, making the medium a more financially appealing specialty.[@fuhring2002]
