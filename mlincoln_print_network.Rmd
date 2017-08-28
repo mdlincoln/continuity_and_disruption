@@ -285,7 +285,7 @@ However, by understanding _when_ these production communities diverge from prese
 
 # Results: Catalysts and Sudden Shifts
 
-(ref:all-nats-eii) The EI Index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750. At 1, all connections made by an actor are to actors outside their national group. At 0, they have an equal number of internal and external connections. At -1, all their connections are to actors within their national group.
+(ref:all-nats-eii) The EI Index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750. At 1, all connections made by an actor are to actors outside their national group. At 0, they have an equal number of internal and external connections. At -1, all their connections are to actors within their national group. Note that, in areas where the lines plateau or feature dramatic spikes (e.g. the English EI index before 1625, the German index as measured from the RKM dataset befroe 1580) the underlying data sample may comprise only a few prints, and therefore ought to be interpreted with extreme caution.
 
 [Insert figure \@ref(fig:all-nats-eii) here.]
 
