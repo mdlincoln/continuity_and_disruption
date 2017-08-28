@@ -309,9 +309,8 @@ ggplot(intl_ties, aes(x = year, y = eii, color = dataset)) +
 
 Figure \@ref(fig:all-nats-eii) plots the changing EI index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750, comparing the trends observed from both the BM and RKM datasets.
 Both museum databases return roughly equivalent results for both the Dutch and Flemish printmaking communities.
-Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production.[^disagree]
-
-[^disagree]: The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
+Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production; though given the greater disparity between their trends, it will be critical not to overinterpret small year-to-year shifts.
+The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
 Given the vast superiority of the BM's holdings in English prints (Table \@ref(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
 
 Dutch artists primarily connected to foreign collaborators up until the 1570s, when they shifted quickly to a roughly even split between domestic versus foreign connections.
