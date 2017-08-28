@@ -437,7 +437,7 @@ Figure \@ref(fig:eii-sim) overlays the EI indices of these simulated networks on
 By in large, both trends overlap: the simulated networks return similar results to those found in the empirical results.
 In other workds, regional print production capacity does, in fact, explain a great deal of the variation of these communities' balance of international versus domestic connections, including some of the most massive changes seen in \@ref(fig:all-nats-eii).
 
-(ref:eii-sim) Random graph EI indices compared to empirical EI indices. The black lines show the EI indices observed in the BM data, while the red ribbons show the range of results returned by simulated networks of the same size and overall connectivity. Some areas with diverging results are highlighted and annotated with concurrent historical events. For visual clarity, only the BM results are displayed here. However, highlighted areas mark significant divergences that appeared in simulations of both datasets.
+(ref:eii-sim) Random graph EI indices compared to empirical EI indices. The black lines show the EI indices observed in the BM data, while the red ribbons show the range of results returned by simulated networks of the same size and overall connectivity. Some areas with diverging results are highlighted and annotated with concurrent historical events. For visual clarity, only the BM results are displayed here. However, highlighted areas mark significant divergences that appeared in simulations of _both_ datasets. See supplementary figure \@ref(fig:addendum-eii) for a complete side-by-side comparison.
 
 [Insert figure \@ref(fig:eii-sim) here.]
 
@@ -651,5 +651,70 @@ This comparative computational approach also underlines the possibility of data-
 Nethier replicating national categories from these source data unthinkingly, nor discarding them as useless, this dynamic network analysis instead contrasted these assigned communities to the potential communities of production documented on the objects themselves.
 When these theoretical and empirical boundaries overlapped, and when they diverged, may differ radically from when those same national categories overlap or diverge from networks of another type, such as familial or religious ones.
 Far from reifying unsuitable categories, historical network analysis can better illuminate the plural nature of transnational art histories of the early modern world.
+
+# Addendum
+
+(ref:addendum-eii) While figure \@ref(fig:eii-sim-example) showed only the simulation results based on British Museum data, this chart shows the full side-by-side comparison of both BM-based and RKM-based simulations. Note that, while there are several points at which empirical data diverge from their paired models, I have highlighted for further interpretation _only_ those sections in which both source-model combinations show matching disjoints.
+
+```{r addendum-eii, fig.cap="(ref:addendum-eii)"}
+bm_nats <- c("Dutch", "Flemish", "English", "French", "German", "Italian")
+rkm_nats <- c("Noord-Nederlands" = "Dutch", "Zuid-Nederlands" = "Flemish", "Engels" = "English", "Frans" = "French", "Duits" = "German", "Italiaans" = "Italian")
+
+# Get the subset of empirical data
+bm_ei_count <- bm_APrPu_alive$nat_trends %>%
+  filter(nationality %in% bm_nats) %>%
+  select(year, nationality, artists_strict, edges_strict, eii)
+
+rkm_ei_count <- rkm_APrPu_alive$nat_trends %>%
+  mutate(nationality = plyr::revalue(nationality, replace = rkm_nats)) %>%
+  filter(nationality %in% bm_nats) %>%
+  select(year, nationality, artists_strict, edges_strict, eii)
+
+emp_results <- bind_rows(
+  "BM" = bm_ei_count,
+  "RKM" = rkm_ei_count,
+  .id = "source"
+) %>%
+  mutate(nationality = factor(nationality, levels = bm_nats))
+
+# Join results into a single dataframe
+sim_results <- bind_rows(
+  "BM" = agg_eii(bm_pref_results),
+  "RKM" = agg_eii(rkm_pref_results) %>%
+    ungroup() %>%
+    mutate(nationality = plyr::revalue(nationality, replace = rkm_nats)),
+  .id = "source"
+) %>%
+  filter(nationality %in% bm_nats) %>%
+  mutate(nationality = factor(nationality, levels = bm_nats))
+
+annotations <- data_frame(
+  nationality = c("Dutch", "English", "Flemish", "Italian", "French"),
+  event_name = c("End of\nDutch revolt", "Reign of\nCharles I", "Spanish invasion\nof Antwerp", "Impact from\nplague of 1656?", "Reign of\nLouis  XIV"),
+  start = c(1648, 1625, 1578, 1656, 1643),
+  end = c(1680, 1649, 1611, 1750, 1715)
+) %>%
+  mutate(nationality = factor(nationality, levels = bm_nats))
+
+annotations <- bind_rows(
+  "BM" = annotations,
+  "RKM" = annotations,
+  .id = "source"
+)
+
+ggplot(sim_results, aes(x = year)) +
+  geom_rect(data = annotations, aes(x = NULL, xmin = start, xmax = end, ymin = -Inf, ymax = Inf), alpha = 0.3) +
+  geom_hline(yintercept = 0, color = "black", linetype = 3) +
+  geom_ribbon(aes(ymin = e05, ymax = e95), alpha = 0.7, fill = "#E41A1C") +
+  geom_line(data = emp_results, aes(y = eii)) +
+  geom_label_repel(data = filter(annotations, source == "BM"), aes(x = (start + end)/2, label = event_name), y = -1, size = 2.5) +
+  facet_grid(source ~ nationality) +
+  ylim(-1, 1) +
+  xlim(1550, 1750) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = NULL, fill = "model", y = "EI Index")
+```
+
 
 # Bibliography
