@@ -311,14 +311,23 @@ ggplot(intl_ties, aes(x = year, y = eii, color = dataset)) +
 
 Figure \@ref(fig:all-nats-eii) plots the changing EI index for Dutch, Flemish, French, British, German, and Italian printmaking communities between 1550--1750, comparing the trends observed from both the BM and RKM datasets.
 Both museum databases return roughly equivalent results for both the Dutch and Flemish printmaking communities.
-Expanding our scope to look at other major European regions, the BM and RKM datasets also roughly agree on the EI index for French, German, and Italian print production; though given the greater disparity between their trends, it will be critical not to overinterpret small year-to-year shifts.
-The only major discrepancy between the two datasets is for the EI index of the English printmaking community.
-Given the vast superiority of the BM's holdings in English prints (Table \@ref(tab:nationality-counts)), the trend observed from the BM data is likely more representative than that observed from the RKM.
 
 Dutch artists primarily connected to foreign collaborators up until the 1570s, when they shifted quickly to a roughly even split between domestic versus foreign connections.
 After this sudden shift, Dutch artists and printmakers continued to favor mostly domestic collaborators, hovering around an EI index of -0.5.
 That is, after this major shift they tended to make at least 75% of their connections to fellow Dutchmen.
 The group of artists classed as Flemish presents a rough inverse of this pattern, making most of their connections internally in the sixteenth and early seventeenth centuries, before quickly shifting around 1675 to majority-external connections.
+
+Expanding our scope to look at other major European regions, the BM and RKM datasets present a more discordant picture of English, French, German, and Italian print production.
+Given the greater disparity between their trends, it is critical not to overinterpret small year-to-year shifts.
+This is especially true for the German results, in which BM and RKM datasets do not even share a unified trend towards increased external or internal connectivity.
+That said, some overall trends are still prominent.
+Though the absolute values in any given year for these datasets diverge, both BM and RKM curves show the French printmaking community turning relatively inwards between 1550 and 1750, and the Italian community starting in the mid-seventeenth century focused inwardly, shifting marginally towards more external connections by 1650, and then returning towards a somewhat inward oreintation by 1750.
+
+Another major discrepancy between the two datasets is for the EI index of the English printmaking community.
+Both curves turn from majority external to majority internal connections, however they do so at different years.
+Both datasets also suffer from a fair amount of missing or low information before 1625.
+That said, in this case the specific histories of the underlying data can inform our interpretation.
+The vast superiority of the BM's holdings in English prints compared to that of the RKM (Table \@ref(tab:nationality-counts)) suggests that, of these two curves, the trend observed from the BM data is likely more representative than that observed from the RKM.
 
 These results support the hypothesis that Dutch printmaking experienced a domestic "turn" not only in subject and style, but also in the infrastructure of print production itself.
 Two details are particularly noteworthy.
@@ -493,7 +502,7 @@ ggplot(filter(sim_results, source == "BM"), aes(x = year)) +
   labs(x = NULL, fill = "model", y = "EI Index")
 ```
 
-However, there are several notable mismatches between the EI indices returned by these randomly generated networks, and those found in the BM and RKM data.
+However, there are several notable mismatches between the EI indices returned by these randomly generated networks, and those found in both the BM and RKM data.
 These are points at which this network simulation fails to predict the balance of domestic and international.
 Model "failure" in this case need not be an analytical roadblock.
 It can productively be rephrased as such: when are the relative sizes of each of these communites alone (the foundation of this model) not enough to explain the balance of network connections?
