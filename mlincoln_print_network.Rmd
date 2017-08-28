@@ -493,22 +493,33 @@ ggplot(filter(sim_results, source == "BM"), aes(x = year)) +
 ```
 
 However, there are several notable mismatches between the EI indices returned by these randomly generated networks, and those found in the BM and RKM data.
+These are points at which this network simulation fails to predict the balance of domestic and international.
+Model "failure" in this case need not be an analytical roadblock.
+It can productively be rephrased as such: when are the relative sizes of each of these communites alone (the foundation of this model) not enough to explain the balance of network connections?
+In those timescapes, what additional effects, such as shorter-term historical events, may have compounded or counteracted the universal network pressures to find well-connected collaborators?
+
 For example, in the northern Netherlands between roughly 1650 and 1675, both the BM- and RKM-based networks return a lower EI index than are predicted by randomized networks of the same relative size.
-In other words, Dutch print producers were making an unexpectedly large number of internal connections during this period, given their size relative to other communities.
+In other words, Dutch print producers were making a larger number of internal connections during this period than one would expect if _merely_ considering their size relative to other communities.
+This disjoint suggests the influence of more short-lived events on the behavior of printmakers during that timespan.
 It is possible that the the official end of the revolt in 1648 with the signing of the Treaty of Münster, and a burgeoning sense of national Dutch pride, may have been expressed in prints through more domestically-centered production.[On the growth in privileges issued by the States General at this time, see @hoftijzer1993; @orenstein2006.]
-Conversely, in the southern Netherlands, a higher-than-expected EI index (i.e. more international connections than found in a random network of the same size) around 1580--1610 coincides with the Spanish invasion of Antwerp and the accompanying exodus of Flemish artists, including printmakers.[@sluijter2009, section 3.]
+Conversely, in the southern Netherlands, a higher-than-predicted EI index (i.e. more international connections than found in a random network of the same size) around 1580--1610 coincides with the Spanish invasion of Antwerp and the accompanying exodus of Flemish artists, including printmakers.[@sluijter2009, section 3.]
+Such a result underlines the enduring effect that Flemish migration had on the art of this period.
 
 One may also point (albeit with slightly less certainty, given the dissimilar results returned by the BM and RKM) to the possible influence of English and French monarchs' artistic priorities on their countries' printmaking communities.
-An unexpectedly high number of international connections in the English printmaking community between 1625 and 1649 coincides with the reign of Charles I, who imported a wide range of both continental artworks and artists to London during his rule.
-In France, far more _internal_ connections between French printmakers are found than expected during the reign of Louis XIV between 1643 and 1715.
-In 1655, the _Académie royale de peinture et sculpture_ began to admit printmakers, legitimizing the medium as a fine art rather than a mechanical craft.[@reed1998, 18--19.]
-The Sun King also issued a large number of print privileges during his reign.[@fuhring2002]
+An higher-than-predicted number of international connections in the English printmaking community between 1625 and 1649 coincides with the reign of Charles I, who imported a wide range of both continental artworks and artists to London during his rule.
+In France, far more _internal_ connections between French printmakers are found than predicted during the reign of Louis XIV between 1643 and 1715.
+Several events during this period may have helped to fortify the already-burgeoning French printmaking community.
+In 1655, the _Académie royale de peinture et sculpture_ began to admit printmakers, legitimizing the medium as a fine art rather than a mechanical craft and thus raising the social esteem and professional position of printmakers.[@reed1998, 18--19.]
+The Sun King also issued a large number of print privileges during his reign, making the medium a more financially appealing specialty.[@fuhring2002]
+Rather than the primary origins of a French printmaking community, these policy changes should be seen as partial (though important) contributors to larger demographic forces already at play.
 
 Both the German and Italian printmaking communities show consistently fewer international connections in the late seventeenth and early eighteenth centuries than are found in simulated communities of equivalent size.^[These trends ought to be treated with more skepticism, given the somewhat different results returned by the BM and RKM.]
-The unexpectedly internal focus of Italian print production for much of this period may have been due, in part, to the plague of 1656 and the economic collapse that followed in its wake.
-The Italian peninsula would still be recovering from this disaster a century later.[@alfani2013]
+Notably, for a period verging on one hundred years, the simulated network predicts more international collaboration by Italian print producers than we actually observe.
+What additional events may have caused such a divergence from the model?
+While only a supposition, it is possible that the prolonged lack of predicted international collaborations may have been due the plague of 1656 and the economic collapse that followed in its wake.
+The Italian peninsula would still be recovering from this disaster a century later, and it appears that the network of artistic print collaboration was not spared.[@alfani2013]
 
-It seems little coincidence that the regional networks that were primarily inward-connecting or evenly connecting in the mid-sixteenth century (the southern Netherlands, Italy, and Germany) also had some of the longest-established printmaking traditions, dating back to the late fifteenth century.[@landau1994, ch 1.]
+Considered as a whole, it seems little coincidence that the regional networks that were primarily inward-connecting or evenly connecting in the mid-sixteenth century (the southern Netherlands, Italy, and Germany) also had some of the longest-established printmaking traditions, dating back to the late fifteenth century.[@landau1994, ch 1.]
 Already possessing well-developed printmaking infrastructure, those regions could host relatively self-sustaining networks of print producers.
 
 [Insert figure \@ref(fig:europe-pop) here.]
