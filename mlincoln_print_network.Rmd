@@ -5,6 +5,8 @@ abstract: |
   English Abstract\: Computational analysis of the potential historical professional networks inferred from surviving print impressions offers novel insight into the evolution of early modern artistic printmaking in Europe. This analysis traces a _longue durée_ print production history, and challenges modern national categorizations.
   
   Bio\: Dr. Matthew D. Lincoln is a data research specialist at the Getty Research Institute, and has previously published in the _International Journal of Digital Art History_, _British Art Studies_, and _Perspective: actualité en histoire de l'art_.
+acknowledgements: |
+  This article is the result of a long and fruitful project that was first presented at the 2015 Alliance of Digital Humanities Organizations annual conference in Sydney. It has benefitted immensely from comments by Arthur Wheelock, as well as the three anonymous reviewers. Research for this article was supported by fellowships from the University of Maryland, the Michelle Smith Collaboratory for Visual Culture, the Samuel H. Kress Foundation, and the Getty Foundation.
 documentclass: article
 bibliography: ../zotero.bib
 csl: chicago-fullnote-bibliography.csl
