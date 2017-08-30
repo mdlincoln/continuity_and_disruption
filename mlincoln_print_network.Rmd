@@ -650,8 +650,17 @@ Bloemaert's case demonstrates the importance of network connections that do not 
 The art historian instinctively intuits connections between historic events and evidentiary anomalies, be they found in an archive, a collection, or a database.
 To build narrative from fragmentary evidence is, to be sure, a core skill in our discipline.
 In doing so, however, we often miss the forest for the trees, unknowingly erasing continuities in our disruption-focused narratives.
-What appear as dramatic, discontinuous changes in one register of these print production networks (the balance of domestic and international ties) has been shown to be, by in large, the results of gradual, continuous changes in another (the relative populations of each community).
-These results provide sorely-needed context for histories of printmaking that privilege national school origin stories and individual printmakers, and provoke further questions about what other _longue durée_ historical factors may have influenced the production and circulation of prints in this period.
+Even as print studies has turned towards more holistic studies of the social situation of collaborative printmaking, it still suffers from a myopic focus on individual actions and short-term events (what Braudel termed _histoire événementielle_) as primary agents in these histories.
+
+This paper has shown that, what appeared as dramatic, discontinuous changes in one register of these print production networks (the balance of domestic and international ties) can, by in large, be explained as the results of gradual, continuous changes in another (the relative populations of each community).
+Such an approach does not discount the importance of _some_ critical events, as seen in the periodic failure of simulated networks to match observed results.
+That those disjunctions are exceptions, however, rather than the rule, should give us pause when forumlating historical explanations.
+These results provide sorely-needed context for and corrective to histories of printmaking that continue to privilege national school origin stories and individual printmakers.
+
+This study provokes further questions about what other _longue durée_ historical factors, including physical geography itself, may have influenced the production and circulation of prints in this period.
+This approach also oepns the door to many more nuanced questions that may be pursued with more detailed and complete data.
+For example, how do the shapes of these networks differ when considering one type of print versus another (e.g. engraved maps versus reproductions of paintings)?
+How do the visual or aesthetic networks between artists (relationships _not_ explicitly encoded in museum metadata used here) differ from, or align with, these museum 
 
 This comparative computational approach also underlines the possibility of data-driven research to productively interrogate modern classification systems.
 Nethier replicating national categories from these source data unthinkingly, nor discarding them as useless, this dynamic network analysis instead contrasted these assigned communities to the potential communities of production documented on the objects themselves.
