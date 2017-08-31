@@ -2,7 +2,7 @@
 title: "Continuity and Disruption in European Networks of Print Production, 1550-1750"
 author: "Matthew D. Lincoln, Getty Research Institute"
 abstract: |
-  English Abstract\: Computational analysis of the potential historical professional networks inferred from surviving print impressions offers novel insight into the evolution of early modern artistic printmaking in Europe. This analysis traces a _longue durée_ print production history, and challenges modern national categorizations.
+  English Abstract\: Computational analysis of the potential historical professional networks inferred from surviving print impressions offers novel insight into the evolution of early modern artistic printmaking in Europe. This analysis traces a _longue durée_ print production history that examines the changing ways in which different regional printmaking communities interacted between 1550 and 1750, highlighting the powerful impact of demographic forces and calling in to question narratives based on single key individuals or the emergence of specific national schools.
   
   Bio\: Dr. Matthew D. Lincoln is a data research specialist at the Getty Research Institute, and has previously published in the _International Journal of Digital Art History_, _British Art Studies_, and _Perspective: actualité en histoire de l'art_.
 acknowledgements: |
