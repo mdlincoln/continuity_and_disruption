@@ -660,7 +660,7 @@ These results provide sorely-needed context for and corrective to histories of p
 This study provokes further questions about what other _longue durée_ historical factors, including physical geography itself, may have influenced the production and circulation of prints in this period.
 This approach also oepns the door to many more nuanced questions that may be pursued with more detailed and complete data.
 For example, how do the shapes of these networks differ when considering one type of print versus another (e.g. engraved maps versus reproductions of paintings)?
-How do the visual or aesthetic networks between artists (relationships _not_ explicitly encoded in museum metadata used here) differ from, or align with, these museum 
+How and when do the visual or aesthetic networks between artists (relationships _not_ explicitly encoded in museum metadata used here) differ from, or align with, these production networks?
 
 This comparative computational approach also underlines the possibility of data-driven research to productively interrogate modern classification systems.
 Nethier replicating national categories from these source data unthinkingly, nor discarding them as useless, this dynamic network analysis instead contrasted these assigned communities to the potential communities of production documented on the objects themselves.
