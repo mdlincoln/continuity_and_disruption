@@ -28,4 +28,5 @@ $(HTML): $(INPUT) $(OUT)
 .PHONY: clean
 clean:
 	rm -rf _bookdown_files
+	rm -rf _main*
 	rm -f $(PDF) $(WORD) $(HTML)
