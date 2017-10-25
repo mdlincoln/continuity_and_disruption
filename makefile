@@ -14,12 +14,15 @@ pdf: $(PDF)
 	open $?
 
 $(PDF): $(INPUT) $(OUT)
+	Rscript .Rprofile --bootstrap-packrat
 	Rscript -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
 
 $(WORD): $(INPUT) $(OUT)
+	Rscript .Rprofile --bootstrap-packrat
 	Rscript -e "bookdown::render_book('$<', 'bookdown::word_document2')"
 
 $(HTML): $(INPUT) $(OUT)
+	Rscript .Rprofile --bootstrap-packrat
 	Rscript -e "bookdown::render_book('$<', 'bookdown::gitbook')"
 
 .PHONY: clean
