@@ -9,7 +9,7 @@ acknowledgements: |
   This article is the result of a long and fruitful research project presented in a very early form at the 2015 Alliance of Digital Humanities Organizations annual conference in Sydney. It has benefitted immensely from comments by Arthur Wheelock, as well as the three anonymous reviewers. Research for this article was supported by fellowships from the University of Maryland, the Michelle Smith Collaboratory for Visual Culture, the Samuel H. Kress Foundation, and the Getty Foundation.
 documentclass: article
 bibliography: library.bib
-biblio-style: chicago-fullnote-bibliography.csl
+csl: chicago-fullnote-bibliography.csl
 ---
 
 ```{r libraries, include = FALSE}
