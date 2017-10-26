@@ -15,7 +15,7 @@ pdf: $(PDF)
 
 $(PDF): $(INPUT) $(OUT)
 	Rscript .Rprofile --bootstrap-packrat
-	Rscript -e "bookdown::render_book('$<', 'bookdown::tufte_handout2')"
+	Rscript -e "bookdown::render_book('$<', 'bookdown::pdf_book')"
 
 $(WORD): $(INPUT) $(OUT)
 	Rscript .Rprofile --bootstrap-packrat

@@ -543,7 +543,7 @@ Already possessing well-developed printmaking infrastructure, those regions coul
 
 [Insert figure \@ref(fig:europe-pop) here.]
 
-(ref:europe-pop) Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. ("Other" regions include Scandinavia, Scotland and Ireland, and eastern Europe).[These population data have been derived from @devries1984, appendix 1; a digitized version of this data set is published in @lincoln_europop.]
+(ref:europe-pop) Proportional populations of different European regions. Over this period, France and England increased their share of the European urban population, while the population share of Italian and German cities decreased. The Dutch share of the European urban population peaked in 1650. ("Other" regions include Scandinavia, Scotland and Ireland, and eastern Europe).
 
 ```{r europe-pop, fig.cap = "(ref:europe-pop)"}
 region_map <- c(
@@ -592,7 +592,7 @@ ggplot(pop_ratio, aes(x = year, y = ratio)) +
   facet_wrap(~ nationality)
 ```
 
-The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to consolidation in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))
+The pattern of early printmaking mastery in Italian and German regions, giving way in the later seventeenth and eighteenth centuries to consolidation in the Netherlands, France, and England, mirrors the general trends in European urban populations over this same period. (Figure \@ref(fig:europe-pop))[These population data have been derived from @devries1984, appendix 1; a digitized version of this data set is published in @lincoln_europop.]
 The share of urban populations living in Italian and German cities decreased between 1500-1800, while the share living in Dutch, French and English cities increased.
 The shifts observed in international interaction may have been driven less by particular disruptive historical moments or artistic movements, and more by gradually building structural incentives powered by these changes in populations and the necessarily-collaborative nature of print production.
 
